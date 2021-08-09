@@ -1,4 +1,6 @@
 import 'tailwindcss/tailwind.css'
+import './main.css'
+
 import { appWithTranslation } from 'next-i18next';
 
 function MyApp({ Component, pageProps }) {

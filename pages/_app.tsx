@@ -1,10 +1,19 @@
-import 'tailwindcss/tailwind.css'
-import './main.css'
-
 import { appWithTranslation } from 'next-i18next';
+import Head from 'next/head'
+import 'tailwindcss/tailwind.css'
+import '../styles/main.css'
+import globalStyles from '../styles/globalStyles'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }) {
+  globalStyles()
+  return (
+    <>
+      <Head>
+        <title>Tailwindcss Emotion Example</title>
+      </Head>
+      <Component {...pageProps} />
+    </>
+  )
 }
 
-export default appWithTranslation(MyApp)
+export default appWithTranslation(App)

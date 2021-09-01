@@ -1,15 +1,31 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import NextDocument, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
+import { getCssString } from './../stitches.config'
+class Document extends NextDocument {
+    static async getInitialProps(ctx: DocumentContext) {
+        try {
+            const initialProps = await NextDocument.getInitialProps(ctx)
 
-class MyDocument extends Document {
-    static async getInitialProps(ctx) {
-        const initialProps = await Document.getInitialProps(ctx)
-        return { ...initialProps }
+            return {
+                ...initialProps,
+                styles: (
+                    <>
+                        {initialProps.styles}
+                        {/* Stitches CSS for SSR */}
+                        <style
+                            id="stitches"
+                            dangerouslySetInnerHTML={{ __html: getCssString() }}
+                        />
+                    </>
+                ),
+            }
+        } finally {
+        }
     }
 
     render() {
-        
+
         return (
-            <Html>
+            <Html lang="en">
                 <Head>
                     <meta name='application-name' content='Sr Smith' />
                     <meta name='apple-mobile-web-app-capable' content='yes' />
@@ -60,4 +76,4 @@ class MyDocument extends Document {
     }
 }
 
-export default MyDocument
+export default Document

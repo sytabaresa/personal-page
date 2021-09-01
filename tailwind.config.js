@@ -4,13 +4,18 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      sans: ['Montserrat', 'sans']
-    }
-    // extend: {
-    //   colors: {
-    //     primary: '#ffcc00'
-    //   }
-    // },
+      sans: ['Montserrat', 'sans'],
+      mono: ['Electrolize', 'monospace']
+    },
+    extend: {
+      colors: {
+        primary: '#ffcc00'
+      },
+      zIndex: {
+        '-10': '-10',
+        '-20': '-20',
+       }
+    },
   },
   variants: {
     extend: {},
@@ -42,7 +47,6 @@ module.exports = {
           "base-200": "#110e0e",
           "base-300": "#060404",
           "base-content": "#ffffff",
-          "--rounded-btn": "1.9rem",
           "info": "#66c6ff",
           "success": "#87d039",
           "warning": "#e2d562",

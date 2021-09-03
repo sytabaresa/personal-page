@@ -10,7 +10,7 @@
   "dependencies": {
     "@stitches/react": "^0.2.5",
     "@tailwindcss/typography": "^0.4.1",
-    "daisyui": "^1.11.0",
+    "daisyui": "^1.14.0",
     "jsxgraph": "^1.2.3",
     "next": "latest",
     "next-i18next": "^8.5.3",

@@ -3,7 +3,7 @@ name: Deploy to Github Pages
 on:
   push:
     branches:
-      - main
+      - master
 
   workflow_dispatch:
 
@@ -22,24 +22,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          
-      - name: Use NPM 7
-        run: npm i -g npm@latest
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-
-            ${{ runner.OS }}-
+      - uses: egordm/gha-yarn-node-cache@v1
+
+      - name: Install JS dependencies
+        run: yarn install
+
 
       - name: Build
         run: |
-          npm ci --legacy-peer-deps
-          npm run build
-          npm run export
+          yarn build
+          yarn export
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

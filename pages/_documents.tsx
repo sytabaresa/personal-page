@@ -1,5 +1,5 @@
 import NextDocument, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import { getCssString } from './../stitches.config'
+import { getCssText } from './../stitches.config'
 class Document extends NextDocument {
     static async getInitialProps(ctx: DocumentContext) {
         try {
@@ -13,7 +13,7 @@ class Document extends NextDocument {
                         {/* Stitches CSS for SSR */}
                         <style
                             id="stitches"
-                            dangerouslySetInnerHTML={{ __html: getCssString() }}
+                            dangerouslySetInnerHTML={{ __html: getCssText() }}
                         />
                     </>
                 ),

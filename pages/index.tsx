@@ -5,8 +5,7 @@ import Rellax from 'rellax'
 import { Arrow, Cross, Triangle } from '../components/svg'
 import { Input, Textarea } from '../components/inputs'
 
-import tw from 'twin.macro'
-import { styled } from '../stitches.config';
+import tw, { styled } from 'twin.macro'
 
 const IndexPage = () => {
   useEffect(() => {
@@ -68,7 +67,7 @@ const IndexPage = () => {
           </div>
           <div className="flex items-center mt-2">
             <div className="w-8 md:w-12 h-1 bg-primary overf"></div>
-            <h4 className="font-mono text-2xl md:text-4xl ml-4">2021</h4>
+            <h4 className="font-mono text-2xl md:text-4xl ml-4">{new Date().getFullYear()}</h4>
           </div>
         </div>
 

@@ -1,5 +1,4 @@
-import tw from 'twin.macro'
-import { styled } from '../stitches.config';
+import tw, { styled } from 'twin.macro'
 
 export const Input = styled('input', {
     ...tw`input input-primary input-ghost border-0 border-b-2`,

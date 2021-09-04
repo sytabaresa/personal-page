@@ -6,9 +6,13 @@ let plugins = [
   [i18n],
 ]
 
-
+options = {}
 if (process.env.NODE_ENV === 'production') {
   plugins.push([withPWA])
+  options = {
+    ...options,
+    basePath: '/personal-page/'
+  }
 }
 
-module.exports = withPlugins(plugins, {});
+module.exports = withPlugins(plugins,);

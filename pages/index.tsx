@@ -3,9 +3,13 @@ import { useEffect } from 'react';
 import Layout from '../components/Layout'
 import Rellax from 'rellax'
 import { Arrow, Cross, Triangle } from '../components/svg'
-import { Input, Textarea } from '../components/inputs'
+// import { Input, Textarea, Label, Button } from '../components/inputs'
 
 import tw, { styled } from 'twin.macro'
+
+const CardButton = styled('button', {
+  ...tw`btn btn-outline btn-primary hover:text-base-100 m-2 w-24 h-24 md:w-28 md:h-28 xl:w-36 xl:h-36 xl:text-xl`
+})
 
 const IndexPage = () => {
   useEffect(() => {
@@ -15,15 +19,8 @@ const IndexPage = () => {
     }
   }, [])
 
-  const CardButton = styled('button', {
-    ...tw`btn btn-outline border-primary hover:bg-primary hover:border-primary 
-    uppercase m-2 w-24 h-24 md:w-28 md:h-28 xl:w-36 xl:h-36 xl:text-xl`
-    // variants: {
-    //   variant: {
-    //       primary: 
-    //   }
-    // }
-  })
+
+
   return (
     <Layout title="SYTA.CO">
       <div className="text-primary relative overflow-hidden w-full" css={{ height: '250vh' }}>
@@ -137,7 +134,7 @@ const IndexPage = () => {
           width: '50vw',
           // bottom: '00rem',
         }}>
-          <div className="bg-primary transform rotate-45 absolute -z-10" css={{
+          <div className="bg-primary transform rotate-45 absolute" css={{
             width: '100rem',
             height: '100rem',
             right: '20rem',
@@ -153,23 +150,23 @@ const IndexPage = () => {
 
             }
           }}></div>
-          <div className="mb-16 ml-16 w-96 relative">
+          <div className="mb-16 ml-16 w-96 relative z-10">
             <div className="inline-block mb-4">
               <h1 className="uppercase text-base-100 text-5xl font-bold text-right">Let's work <br />together</h1>
             </div>
-            <div className="form-control uppercase">
+            <div className="form-control">
               <label className="label">
-                <span className="label-text text-base-100">Name</span>
+                <span className="text-base-100">Name</span>
               </label>
-              <Input type="text" placeholder="" variant="light" />
+              <input type="text" placeholder="" className="input" />
               <label className="label">
-                <span className="label-text text-base-100">Email</span>
+                <span className="text-base-100">Email</span>
               </label>
-              <Input type="email" placeholder="" variant="light" />
+              <input type="email" placeholder=""className="input"  />
               <label className="label">
-                <span className="label-text text-base-100">tell me a little what you need</span>
+                <span className="text-base-100">tell me a little what you need</span>
               </label>
-              <Textarea placeholder="" variant="light" rows={5} css={{
+              <textarea placeholder=""  className="textarea textarea-bordered h-20" rows={5} css={{
                 '&::before': {
                   position: 'absolute',
                   left: '-1px',
@@ -187,7 +184,7 @@ const IndexPage = () => {
                   borderRight: '70px solid transparent',
                 }
               }} />
-              {/* <button type="submit" className="btn absolute bottom-0 right-0 w-32">Submit</button> */}
+              <button type="submit" className="absolute bottom-0 right-0 w-32">Submit</button>
             </div>
           </div>
         </div>

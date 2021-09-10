@@ -9,12 +9,42 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#ffcc00'
+        primary: {
+          DEFAULT: '#ffcc00',
+          focus: '#cca300',
+          content: '#ffffff'
+        },
+        secondary: {
+          DEFAULT: "#ffdd55",
+          focus: "#ddb100",
+          content: "#ffffff",
+        },
+        accent: {
+          DEFAULT: "#d99330",
+          focus: "#b57721",
+          content: "#ffffff",
+        },
+        neutral: {
+
+          DEFAULT: "#110e0e",
+          focus: "#060404",
+          content: "#ffffff",
+        },
+        base: {
+          100: "#171212",
+          200: "#110e0e",
+          300: "#060404",
+          content: "#ffffff",
+        },
+        info: "#66c6ff",
+        success: "#87d039",
+        warning: "#e2d562",
+        error: "#ff6f6f",
       },
       zIndex: {
         '-10': '-10',
         '-20': '-20',
-       }
+      }
     },
   },
   variants: {

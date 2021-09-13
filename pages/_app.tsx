@@ -1,6 +1,7 @@
 import { appWithTranslation } from 'next-i18next';
 import Head from 'next/head'
-import 'tailwindcss/tailwind.css'
+import '../styles/index.css';
+// import 'tailwindcss/tailwind.css';
 import globalStyles from '../styles/globalStyles'
 import type { AppProps } from 'next/app';
 

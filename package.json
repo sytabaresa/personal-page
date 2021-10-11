@@ -9,7 +9,7 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "@stitches/react": "^1.0.0",
+    "@stitches/react": "^1.2.5",
     "@tailwindcss/typography": "^0.4.1",
     "daisyui": "^1.11.0",
     "jsxgraph": "^1.2.3",

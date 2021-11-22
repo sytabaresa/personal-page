@@ -14,7 +14,7 @@
     "daisyui": "^1.11.0",
     "jsxgraph": "^1.2.3",
     "next": "latest",
-    "next-i18next": "^8.5.3",
+    "next-i18next": "^9.1.0",
     "next-pwa": "^5.2.23",
     "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.6",

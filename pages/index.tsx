@@ -6,9 +6,7 @@ import { Arrow, Cross, Triangle } from '../components/svg'
 
 import * as basicScroll from 'basicscroll'
 
-import tw, { styled } from 'twin.macro'
 import React from 'react';
-
 
 const CardButton = (props: any) => <button className="btn btn-outline btn-primary-white m-2 w-24 h-24 md:w-28 md:h-28 xl:w-36 xl:h-36 xl:text-xl" {...props}></button>
 const IndexPage = () => {
@@ -66,12 +64,7 @@ const IndexPage = () => {
     <Layout title="SYTA.CO">
       <div
         id="scroll-container"
-        className="text-primary relative overflow-hidden w-full"
-        css={{
-          height: '250vh',
-          // perspectiveOrigin: '0% top',
-          // perspective: parallaxPerspective
-        }}
+        className="text-primary relative overflow-hidden w-full h-[250vh]"
       >
         <div className="anchor" />
         {/* cross1 */}
@@ -86,8 +79,7 @@ const IndexPage = () => {
         </div>
 
         {/* cross2 */}
-        <div className="absolute hidden md:grid top-0 left-0 ml-4 grid-cols-2 gap-4"
-          css={{ top: '70vh' }}>
+        <div className="absolute hidden md:grid top-0 left-0 ml-4 grid-cols-2 gap-4 top-[70vh]">
           <Cross />
           <Cross />
           <Cross />
@@ -95,15 +87,15 @@ const IndexPage = () => {
 
         {/* cross3 */}
         <div className="absolute hidden md:grid top-0 left-0 ml-32 grid-cols-2 gap-4
-         origin-center transform rotate-180" css={{ top: '78vh' }}>
+         origin-center transform rotate-180 top-[70vh]">
           <Cross />
           <Cross />
           <Cross />
         </div>
 
-        <div className="absolute p-4" css={{ top: '10vh', right: '45%' }}>
+        <div className="absolute p-4 top-[10vh] right-[45%]">
           <div className="anim-element" data-ty="-200">
-            <Triangle className="absolute w-52 h-52 origin-center rotate-180"/>
+            <Triangle className="absolute w-52 h-52 origin-center rotate-180" />
           </div>
           <div>
             <Triangle className="absolute w-52 h-52 origin-center bg-transparent transform ml-16 mt-28" />
@@ -130,16 +122,7 @@ const IndexPage = () => {
 
         {/* UNDER CONSTRUCTION */}
         <div
-          className="inline-block font-bold md:absolute left-0 top-0 bg xl:mt-0 anim-element" data-tx="-500"
-          css={{
-            '@md': {
-              'top': '18vh'
-            },
-            '@lg': {
-              'top': '30vh'
-            },
-          }}
-        >
+          className="inline-block font-bold md:absolute left-0 top-0 bg xl:mt-0 anim-element md:top-[18vh] lg:top-[30vh]" data-tx="-500">
           <div className="inline-block justify-start xl:justify-end pl-6 xl:pl-20 pr-2 md:pr-8 py-2 md:py-6 bg-base-100"
             style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
           >
@@ -149,7 +132,7 @@ const IndexPage = () => {
           </div>
           <div
             className="text-3xl md:text-5xl xl:text-7xl flex mt-8 ml-5 xl:ml-24"
-            css={{
+            style={{
               lineHeight: .8,
               // perspective: '1px',
               // perspectiveOrigin: '0 0',
@@ -168,16 +151,9 @@ const IndexPage = () => {
         </div>
 
         {/* cards */}
-        <div className="md:absolute flex flex-col items-center md:items-end right-0 mt-8 md:mt-0 md:mr-16 lg:mr-24 xl:mr-32 anim-element"
+        <div className="md:absolute flex flex-col items-center md:items-end right-0 mt-8 md:mt-0 md:mr-16 
+        lg:mr-24 xl:mr-32 anim-element md:top-[45vh] lg:top-[30vh]"
           data-ty="500"
-          css={{
-            '@md': {
-              'top': '45vh'
-            },
-            '@lg': {
-              'top': '30vh'
-            },
-          }}
         >
           <h2 className="text-6xl md:text-7xl xl:text-8xl font-sans font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0">
             Sebastian<br />Tabares.
@@ -195,26 +171,9 @@ const IndexPage = () => {
         </div>
 
         {/* left block */}
-        <div className="absolute left-0 bottom-0" css={{
-          width: '50vw',
-          // bottom: '00rem',
-        }}>
-          <div className="bg-primary transform rotate-45 absolute" css={{
-            width: '100rem',
-            height: '100rem',
-            right: '20rem',
-            bottom: '-40rem',
-            '@sm': {
-              right: '15rem',
-            },
-            '@md': {
-              right: '15rem',
-            },
-            '@lg': {
-              right: '21rem',
-
-            }
-          }}></div>
+        <div className="absolute left-0 bottom-0 w-[50vw]">
+          <div className="bg-primary transform rotate-45 absolute 
+          w-[100rem] h-[100rem] right-[20rem] bottom-[-40rem] sm:right-[15rem] md:right-[15rem] lg:right-[21rem]"></div>
           <div className="mb-16 ml-16 w-96 relative z-10">
             <div className="inline-block mb-4">
               <h1 className="uppercase text-base-100 text-5xl font-bold text-right">Let's work <br />together</h1>
@@ -231,48 +190,35 @@ const IndexPage = () => {
               <label className="label">
                 <span className="text-base-100">Tell me a little what you need</span>
               </label>
-              <textarea placeholder="" className="textarea textarea-bordered textarea-back textarea-transparent h-40" rows={5} css={{
-                '&::before': {
-                  position: 'absolute',
-                  left: '-1px',
-                  top: '-1px',
-                  content: '',
-                  borderTop: '70px solid silver',
-                  borderRight: '70px solid transparent',
-                },
-                '&::after': {
-                  position: 'absolute',
-                  left: '-2px',
-                  top: '-2px',
-                  content: '',
-                  borderTop: '70px solid silver',
-                  borderRight: '70px solid transparent',
-                }
-              }} />
+              <textarea placeholder="" className="textarea textarea-bordered textarea-back textarea-transparent h-40" rows={5}
+              // css={{
+              //   '&::before': {
+              //     position: 'absolute',
+              //     left: '-1px',
+              //     top: '-1px',
+              //     content: '',
+              //     borderTop: '70px solid silver',
+              //     borderRight: '70px solid transparent',
+              //   },
+              //   '&::after': {
+              //     position: 'absolute',
+              //     left: '-2px',
+              //     top: '-2px',
+              //     content: '',
+              //     borderTop: '70px solid silver',
+              //     borderRight: '70px solid transparent',
+              //   }
+              // }} 
+              />
               <button type="submit" className="btn absolute bottom-0 right-0 w-32">Submit</button>
             </form>
           </div>
         </div>
 
         {/* right block */}
-        <div className="absolute right-0 bottom-0" css={{
-          width: '50vw',
-          // bottom: '00rem',
-        }}>
-          <div className="bg-primary transform -rotate-45 absolute" css={{
-            width: '100rem',
-            height: '100rem',
-            left: '12rem',
-            bottom: '-53rem',
-            '@sm': {
-              left: '18rem',
-            },
-            '@md': {
-            },
-            '@lg': {
-              left: '20rem',
-            }
-          }}></div>
+        <div className="absolute right-0 bottom-0 w-[50vw]">
+          <div className="bg-primary transform -rotate-45 absolute 
+          w-[100rem] h-[100rem] left-[12rem] bottom-[-53rem] sm:left-[18rem] lg:left-[20rem]"></div>
         </div>
       </div>
     </Layout >

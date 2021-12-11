@@ -90,3 +90,17 @@
 @import"styled/toggle.css";
 @import"styled/tooltip.css";
 @import"styled/typography.css";
+
+.anim-element {
+	transform: translate(var(--tx), var(--ty)) rotate(var(--r));
+	will-change: transform;
+}
+
+.anchor {
+	position: absolute;
+	top: 100vh;
+	width: 20px;
+	height: 4px;
+	background: currentcolor;
+  	opacity: 0;
+}

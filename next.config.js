@@ -16,4 +16,4 @@ if (process.env.NODE_ENV === 'production') {
   }
 }
 
-module.exports = withPlugins(plugins,options);
+module.exports = withPlugins(plugins, options);

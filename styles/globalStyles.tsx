@@ -10,7 +10,8 @@ const customStyles = {
   ],
   body: {
     // WebkitTapHighlightColor: theme`colors.purple.500`,
-    ...tw`antialiased overflow-x-hidden bg-base-100` as any,
+    ...tw`antialiased overflow-hidden bg-base-100 overflow-y-auto` as any,
+
   },
 }
 

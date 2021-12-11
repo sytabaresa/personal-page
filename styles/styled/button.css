@@ -1,5 +1,5 @@
   .btn {
-    @apply font-semibold uppercase;
+    @apply font-black uppercase;
     border-width: var(--border-btn, 1px);
     animation: button-pop var(--animation-btn, 0.25s) ease-out;
     text-transform: var(--btn-text-case, uppercase);
@@ -121,6 +121,12 @@
       }
       &.btn-primary {
         @apply text-primary;
+        &:hover {
+          @apply bg-primary text-base-100 border-primary-focus;
+        }
+      }
+      &.btn-primary-white {
+        @apply text-white border-primary;
         &:hover {
           @apply bg-primary text-base-100 border-primary-focus;
         }

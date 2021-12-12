@@ -104,3 +104,24 @@
 	background: currentcolor;
   	opacity: 0;
 }
+
+.skew-textarea {
+	left: 0;
+	&::before {
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        content: '';
+        border-top: 70px solid silver;
+        border-right: 70px solid transparent;
+    }
+
+    &::after {
+		position: absolute;
+		left: -2px;
+        top: -2px;
+        content: '';
+        border-top: 70px solid silver;
+        border-right: 70px solid transparent;
+    }	
+}

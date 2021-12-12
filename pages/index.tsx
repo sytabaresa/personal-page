@@ -94,7 +94,7 @@ const IndexPage = () => {
         </div>
 
         <div className="absolute p-4 top-[10vh] right-[45%]">
-          <div className="anim-element" data-ty="-200">
+          <div className="anim-element" data-ty="-400">
             <Triangle className="absolute w-52 h-52 origin-center rotate-180" />
           </div>
           <div>
@@ -190,7 +190,8 @@ const IndexPage = () => {
               <label className="label">
                 <span className="text-base-100">Tell me a little what you need</span>
               </label>
-              <textarea placeholder="" className="textarea textarea-bordered textarea-back textarea-transparent h-40" rows={5}
+              <textarea placeholder="" className="skew-textarea textarea textarea-bordered textarea-back textarea-transparent h-40
+              " rows={5}
               // css={{
               //   '&::before': {
               //     position: 'absolute',

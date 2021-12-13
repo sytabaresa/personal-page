@@ -1,8 +1,8 @@
-import React from "react";
+import { SVGProps } from "react";
 
-export const Arrow: React.FC = () => {
+export const Arrow = (props: SVGProps<SVGSVGElement>) => {
     return (
-        <svg viewBox="0 0 58 58" className="fill-current w-full h-full">
+        <svg viewBox="0 0 58 58" className={`fill-current w-full h-full ${props.className}`} {...props}>
             <path d="M8.53553 1.90441C6.58291 -0.0482135 3.41709 -0.0482144 1.46447 
       1.90441C-0.488155 3.85703 -0.488156 7.02285 1.46447 8.97547L8.53553 
       1.90441ZM52.0885 57.5284C54.8499 57.5284 57.0885 55.2899 57.0885 

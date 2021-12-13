@@ -47,6 +47,9 @@ module.exports = {
       zIndex: {
         '-10': '-10',
         '-20': '-20',
+      },
+      animation: {
+        bounce5s: 'bounce 5s infinite',
       }
     },
   },

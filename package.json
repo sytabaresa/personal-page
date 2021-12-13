@@ -9,6 +9,7 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@brainhubeu/react-carousel": "^2.0.4",
     "basicscroll": "^3.0.4",
     "next": "^12.0.7",
     "next-i18next": "^10.0.1",
@@ -19,20 +20,17 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
+    "@tailwindcss/typography": "^0.5.0",
     "@types/node": "^12.12.21",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
-    "@types/rellax": "^1.7.4",
     "@types/tailwindcss": "^2.2.4",
     "autoprefixer": "^10.3.1",
+    "next-compose-plugins": "^2.2.1",
+    "postcss": "^8.4.4",
     "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.6",
     "postcss-nesting": "^10.0.2",
-    "babel-plugin-macros": "^3.1.0",
-    "next-compose-plugins": "^2.2.1",
-    "postcss": "^8.4.4",
-    "@tailwindcss/typography": "^0.5.0",
     "tailwindcss": "^3.0.1",
     "tailwindcss-filters": "^3.0.0",
     "typescript": "4"

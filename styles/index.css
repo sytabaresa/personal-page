@@ -137,3 +137,12 @@
         border-right: 70px solid transparent;
     }	
 }
+
+
+.BrainhubCarouselItem--active {
+    @apply !opacity-100;
+}
+
+.BrainhubCarouselItem {
+    @apply opacity-30 !items-start;
+}

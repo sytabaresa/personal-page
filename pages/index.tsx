@@ -3,10 +3,18 @@ import { useEffect } from 'react';
 import Layout from '../components/Layout'
 import { Arrow, Cross, NextArrow, Triangle } from '../components/svg'
 import * as basicScroll from 'basicscroll'
-import dynamic from 'next/dynamic';
-
+import { getAllPosts } from '../lib/api';
+import PostCarousel from '../components/postCarrousel';
+import Post from '../types/post';
 const CardButton = (props: any) => <button className="btn btn-outline btn-primary-white !bg-base-100 m-2 !w-24 !h-24 md:!w-28 md:!h-28 xl:!w-36 xl:!h-36 xl:text-xl" {...props}></button>
-const IndexPage = () => {
+
+interface IndexPageProps {
+  allPosts: Post[]
+}
+
+const IndexPage = (props: IndexPageProps) => {
+
+  const { allPosts } = props
 
   useEffect(() => {
     const anims: any[] = []
@@ -61,177 +69,183 @@ const IndexPage = () => {
     <Layout title="SYTA.CO">
       <div
         id="scroll-container"
-        className="text-primary relative overflow-hidden w-full h-[220vh] md:h-[220vh]"
+        className="text-primary relative overflow-hidden w-full h-[300vh] md:h-[220vh]"
       >
         <div className="anchor" />
 
-        {/* cross 1 */}
-        <div className="absolute hidden md:grid top-0 left-0 mt-4 ml-4 grid-cols-2 gap-8" data-rellax-speed="8">
-          <Cross className="hidden lg:block" />
-          <Cross className="hidden lg:block" />
-          <Cross />
-          <Cross />
-          <Cross />
-          <Cross />
-          <Cross />
-        </div>
+        <div id="page-1" className="h-screen">
 
-        {/* cross 2 */}
-        <div className="absolute hidden md:grid left-0 ml-4 grid-cols-2 gap-8 top-[75vh]">
-          <Cross />
-          <Cross />
-          <Cross />
-        </div>
+          {/* cross 1 */}
+          <div className="absolute hidden md:grid top-0 left-0 mt-4 ml-4 grid-cols-2 gap-8" data-rellax-speed="8">
+            <Cross className="hidden lg:block" />
+            <Cross className="hidden lg:block" />
+            <Cross />
+            <Cross />
+            <Cross />
+            <Cross />
+            <Cross />
+          </div>
 
-        {/* cross 3 */}
-        <div className="absolute hidden md:grid left-0 ml-32 grid-cols-2 gap-8
+          {/* cross 2 */}
+          <div className="absolute hidden md:grid left-0 ml-4 grid-cols-2 gap-8 top-[75vh]">
+            <Cross />
+            <Cross />
+            <Cross />
+          </div>
+
+          {/* cross 3 */}
+          <div className="absolute hidden md:grid left-0 ml-32 grid-cols-2 gap-8
          origin-center transform rotate-180 top-[85vh]">
-          <Cross />
-          <Cross />
-          <Cross />
-        </div>
-
-        {/* cross 4 */}
-        <div className="absolute hidden md:grid right-0 mt-4 mr-4 grid-cols-2 gap-8 top-[90vh]" data-rellax-speed="8">
-          <Cross className="opacity-0" />
-          <Cross />
-          <Cross />
-          <Cross />
-          <Cross />
-          <Cross />
-          <Cross />
-        </div>
-
-
-        {/* Next arrow */}
-        <div className="absolute left-1/2 top-[85vh]">
-          <NextArrow className="relative w-12 h-12 md:w-24 md:h-24 fill-primary -left-1/2 motion-safe:animate-bounce5s" />
-        </div>
-
-        {/* Triangles 1 */}
-        <div className="absolute -z-10 transform-gpu scale-50 md:scale-100 p-4 top-[75vh] md:top-0 right-[20%] md:right-[50%]">
-          <div className="anim-element" data-ty="-400">
-            <Triangle className="absolute w-52 h-52 origin-center rotate-180 stroke-primary stroke-[8px]" />
+            <Cross />
+            <Cross />
+            <Cross />
           </div>
-          <div>
-            <Triangle className="absolute w-52 h-52 origin-center transform ml-16 mt-28 stroke-primary stroke-[8px]" />
-          </div>
-        </div>
 
-        {/* Triangles 2 */}
-        <div className="absolute -z-10 transform-gpu scale-50 md:scale-100 p-4 top-[60vh] md:top-[70vh] left-[10%] md:left-[20%]">
-          <div>
-            <Triangle className="absolute w-52 h-52 origin-center -rotate-90 stroke-primary stroke-[12px]" />
+          {/* cross 4 */}
+          <div className="absolute hidden md:grid right-0 mt-4 mr-4 grid-cols-2 gap-8 top-[80vh]" data-rellax-speed="8">
+            <Cross className="opacity-0" />
+            <Cross />
+            <Cross />
+            <Cross />
+            <Cross />
+            <Cross />
+            <Cross />
           </div>
-          <div>
-            <Triangle className="absolute w-20 h-20 origin-center rotate-90 transform ml-24 mt-32 stroke-primary stroke-[30px]" />
-          </div>
-          <div>
-            <Triangle className="absolute w-20 h-20 origin-center rotate-90 transform -ml-24 mt-4 stroke-primary stroke-[30px]" />
-          </div>
-        </div>
 
-        {/* 2021 */}
-        <div className="absolute hidden md:block top-0 right-0 flex flex-col items-end mt-4 mr-4 anim-element" data-tx="500">
-          <div className="w-28 h-6 md:w-64 md:h-10"
-            style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
-          >
-          </div>
-          <div className="flex items-center mt-2">
-            <div className="w-8 md:w-24 h-1 bg-primary overf"></div>
-            <h4 className="font-mono text-2xl md:text-4xl ml-4">{new Date().getFullYear()}</h4>
-          </div>
-        </div>
 
-        {/* syta.co */}
-        <div className="web-page font-mono text-3xl md:text-5xl md:mt-10 mb-4 md:my-6 ml-4 md:ml-32 lg:ml-64 md:absolute left-0 anim-element" data-ty="500"
-        // css={{ ...parallax(-3), top: '300px' }}
-        >
-          <h2>syta.co</h2>
-        </div>
+          {/* Next arrow */}
+          <div className="absolute left-1/2 top-[85vh]">
+            <NextArrow className="relative w-12 h-12 md:w-24 md:h-24 fill-primary -left-1/2 motion-safe:animate-bounce5s" />
+          </div>
 
-        {/* UNDER CONSTRUCTION */}
-        <div
-          className="inline-block font-bold md:absolute left-0 top-0 bg xl:mt-0 anim-element md:top-[18vh] lg:top-[30vh]" data-tx="-500">
-          <div className="inline-block justify-start xl:justify-end pl-6 xl:pl-20 pr-2 md:pr-8 py-2 md:py-6 bg-base-100 relative"
-            style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
-          >
-            <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 fill-primary absolute right-0 -mt-24 rotate-90" />
-            <div className="flex items-start justify-start p-2 bg-base-100">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none tracking-tighter text-yellow-400">CAUTION</h1>
+          {/* Triangles 1 */}
+          <div className="absolute -z-10 transform-gpu scale-50 md:scale-100 p-4 top-[75vh] md:top-0 right-[20%] md:right-[50%]">
+            <div className="anim-element" data-ty="-400">
+              <Triangle className="absolute w-52 h-52 origin-center rotate-180 stroke-primary stroke-[8px]" />
+            </div>
+            <div>
+              <Triangle className="absolute w-52 h-52 origin-center transform ml-16 mt-28 stroke-primary stroke-[8px]" />
             </div>
           </div>
-          <div
-            className="text-3xl md:text-5xl xl:text-7xl flex mt-8 ml-5 xl:ml-24"
-            style={{
-              lineHeight: .8,
-              // perspective: '1px',
-              // perspectiveOrigin: '0 0',
-            }}
+
+          {/* Triangles 2 */}
+          <div className="absolute -z-10 transform-gpu scale-50 md:scale-100 p-4 top-[60vh] md:top-[70vh] left-[10%] md:left-[20%]">
+            <div>
+              <Triangle className="absolute w-52 h-52 origin-center -rotate-90 stroke-primary stroke-[12px]" />
+            </div>
+            <div>
+              <Triangle className="absolute w-20 h-20 origin-center rotate-90 transform ml-24 mt-32 stroke-primary stroke-[30px]" />
+            </div>
+            <div>
+              <Triangle className="absolute w-20 h-20 origin-center rotate-90 transform -ml-24 mt-4 stroke-primary stroke-[30px]" />
+            </div>
+          </div>
+
+          {/* 2021 */}
+          <div className="absolute hidden md:block top-0 right-0 flex flex-col items-end mt-4 mr-4 anim-element" data-tx="500">
+            <div className="w-28 h-6 md:w-64 md:h-10"
+              style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
+            >
+            </div>
+            <div className="flex items-center mt-2">
+              <div className="w-8 md:w-24 h-1 bg-primary overf"></div>
+              <h4 className="font-mono text-2xl md:text-4xl ml-4">{new Date().getFullYear()}</h4>
+            </div>
+          </div>
+
+          {/* syta.co */}
+          <div className="web-page font-mono text-3xl md:text-5xl md:mt-10 mb-4 md:my-6 ml-4 md:ml-32 lg:ml-64 md:absolute left-0 anim-element" data-ty="500"
+          // css={{ ...parallax(-3), top: '300px' }}
           >
-            <div className="-z-10 flex">
-              <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 fill-primary" />
-              <div className="under-construction">
-                <h1 className="">UNDER</h1>
-                <h1 className="">CONSTRUCTION</h1>
+            <h2>syta.co</h2>
+          </div>
+
+          {/* UNDER CONSTRUCTION */}
+          <div
+            className="inline-block font-bold md:absolute left-0 top-0 bg xl:mt-0 anim-element md:top-[18vh] lg:top-[30vh]" data-tx="-500">
+            <div className="inline-block justify-start xl:justify-end pl-6 xl:pl-20 pr-2 md:pr-8 py-2 md:py-6 bg-base-100 relative"
+              style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
+            >
+              <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 fill-primary absolute right-0 -mt-24 rotate-90" />
+              <div className="flex items-start justify-start p-2 bg-base-100">
+                <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none tracking-tighter text-yellow-400">CAUTION</h1>
+              </div>
+            </div>
+            <div
+              className="text-3xl md:text-5xl xl:text-7xl flex mt-8 ml-5 xl:ml-24"
+              style={{
+                lineHeight: .8,
+                // perspective: '1px',
+                // perspectiveOrigin: '0 0',
+              }}
+            >
+              <div className="-z-10 flex">
+                <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 fill-primary" />
+                <div className="under-construction">
+                  <h1 className="">UNDER</h1>
+                  <h1 className="">CONSTRUCTION</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* cards */}
+          <div className="md:absolute flex flex-col items-center md:items-end right-0 mt-8 md:mt-0 md:mr-16 
+        lg:mr-24 xl:mr-40 md:anim-element md:top-[45vh] lg:top-[30vh]"
+            data-ty="500"
+          >
+            <h2 className="text-6xl md:text-7xl xl:text-8xl font-sans font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0">
+              Sebastian<br />Tabares.
+            </h2>
+            <div className="inline-block mt-8">
+              <div>
+                <CardButton>github</CardButton>
+                <CardButton>linkedin</CardButton>
+              </div>
+              <div>
+                <CardButton>twitter</CardButton>
+                <CardButton>email</CardButton>
               </div>
             </div>
           </div>
         </div>
+        <div id="page-2" className="">
+          <PostCarousel posts={allPosts} className="md:mt-10 w-full md:w-4/5 mx-auto" />
 
-        {/* cards */}
-        <div className="md:absolute flex flex-col items-center md:items-end right-0 mt-8 md:mt-0 md:mr-16 
-        lg:mr-24 xl:mr-40 md:anim-element md:top-[45vh] lg:top-[30vh]"
-          data-ty="500"
-        >
-          <h2 className="text-6xl md:text-7xl xl:text-8xl font-sans font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0">
-            Sebastian<br />Tabares.
-          </h2>
-          <div className="inline-block mt-8">
-            <div>
-              <CardButton>github</CardButton>
-              <CardButton>linkedin</CardButton>
+          {/* Main Form */}
+          <div className="mb-16 px-4 w-screen md:ml-16 md:w-96 absolute bottom-0 z-10">
+            <div className="inline-block mb-4">
+              <h1 className="uppercase text-base-100 text-5xl font-bold text-right shadow-primary shadow-outline">Let's work <br />together</h1>
             </div>
-            <div>
-              <CardButton>twitter</CardButton>
-              <CardButton>email</CardButton>
-            </div>
+            <form className="form-control uppercase">
+              <label className="label">
+                <span className="text-base-100">Name</span>
+              </label>
+              <input type="text" placeholder="" className="input input-line input-back input-transparent" />
+              <label className="label">
+                <span className="text-base-100">Email</span>
+              </label>
+              <input type="email" placeholder="" className="input input-line input-back input-transparent" />
+              <label className="label">
+                <span className="text-base-100">Tell me a little what you need</span>
+              </label>
+              <div className="relative">
+                <textarea placeholder="" className="skew-textarea w-full textarea textarea-bordered textarea-back textarea-transparent h-40" rows={6}
+                />
+                <button type="submit" className="btn absolute bottom-0 right-0 w-32">Submit</button>
+              </div>
+            </form>
           </div>
-        </div>
 
-        {/* Main Form */}
-        <div className="mb-16 px-4 w-screen md:ml-16 md:w-96 absolute bottom-0 z-10">
-          <div className="inline-block mb-4">
-            <h1 className="uppercase text-base-100 text-5xl font-bold text-right shadow-primary shadow-outline">Let's work <br />together</h1>
+          {/* left block */}
+          <div className="bg-primary transform rotate-45 absolute 
+          w-[100rem] h-[100rem] left-[-110rem] md:left-[-70rem] top-[100vh] md:top-auto md:bottom-[-40rem] sm:right-[15rem] md:right-[15rem] lg:right-[21rem]">
           </div>
-          <form className="form-control uppercase">
-            <label className="label">
-              <span className="text-base-100">Name</span>
-            </label>
-            <input type="text" placeholder="" className="input input-line input-back input-transparent" />
-            <label className="label">
-              <span className="text-base-100">Email</span>
-            </label>
-            <input type="email" placeholder="" className="input input-line input-back input-transparent" />
-            <label className="label">
-              <span className="text-base-100">Tell me a little what you need</span>
-            </label>
-            <div className="relative">
-              <textarea placeholder="" className="skew-textarea w-full textarea textarea-bordered textarea-back textarea-transparent h-40" rows={6}
-              />
-              <button type="submit" className="btn absolute bottom-0 right-0 w-32">Submit</button>
-            </div>
-          </form>
-        </div>
 
-        {/* left block */}
-        <div className="bg-primary transform rotate-45 absolute 
-          w-[100rem] h-[100rem] left-[-110rem] md:left-[-70rem] top-[20vh] md:top-auto md:bottom-[-40rem] sm:right-[15rem] md:right-[15rem] lg:right-[21rem]">
-        </div>
-
-        {/* right block */}
-        <div className="bg-primary -rotate-45 absolute 
-          w-[200rem] h-[200rem] left-[3rem] md:left-[12rem] top-[30vh] md:top-auto md:bottom-[-170rem] sm:left-[18rem] lg:left-[20rem]">
+          {/* right block */}
+          <div className="bg-primary -rotate-45 absolute 
+          w-[200rem] h-[200rem] left-[3rem] md:left-[12rem] top-[110vh] md:top-auto md:bottom-[-170rem] sm:left-[18rem] lg:left-[20rem]">
+          </div>
         </div>
       </div>
     </Layout >
@@ -239,3 +253,18 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+
+export const getStaticProps = async () => {
+  const allPosts = getAllPosts([
+    'title',
+    'date',
+    'slug',
+    'author',
+    'coverImage',
+    'excerpt',
+  ])
+
+  return {
+    props: { allPosts },
+  }
+}

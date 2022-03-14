@@ -1,11 +1,14 @@
 
 import { useEffect } from 'react';
 import Layout from '../components/Layout'
-import { Arrow, Cross, NextArrow, Triangle } from '../components/svg'
+import { Arrow, Logo, Cross, NextArrow, Triangle } from '../components/svg'
 import * as basicScroll from 'basicscroll'
 import { getAllPosts } from '../lib/api';
 import PostCarousel from '../components/postCarrousel';
 import Post from '../types/post';
+import { animateScroll as scroll, Element } from "react-scroll"
+
+
 const CardButton = (props: any) => <button className="btn btn-outline btn-primary-white !bg-base-100 m-2 !w-24 !h-24 md:!w-28 md:!h-28 xl:!w-36 xl:!h-36 xl:text-xl" {...props}></button>
 
 interface IndexPageProps {
@@ -69,7 +72,7 @@ const IndexPage = (props: IndexPageProps) => {
     <Layout title="SYTA.CO">
       <div
         id="scroll-container"
-        className="text-primary relative overflow-hidden w-full h-[300vh] md:h-[220vh]"
+        className="text-primary relative overflow-hidden w-full "
       >
         <div className="anchor" />
 
@@ -114,7 +117,12 @@ const IndexPage = (props: IndexPageProps) => {
 
 
           {/* Next arrow */}
-          <div className="absolute left-1/2 top-[85vh]">
+          <div className="absolute left-1/2 top-[85vh] cursor-pointer" onClick={() => scroll.scrollTo('page-2' as any, {
+            duration: 1500,
+            delay: 100,
+            smooth: 'easeInOutQuint',
+            containerId: 'page-2-container',
+          })}>
             <NextArrow className="relative w-12 h-12 md:w-24 md:h-24 fill-primary -left-1/2 motion-safe:animate-bounce5s" />
           </div>
 
@@ -142,7 +150,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* 2021 */}
-          <div className="absolute hidden md:block top-0 right-0 flex flex-col items-end mt-4 mr-4 anim-element" data-tx="500">
+          <div className="absolute md:block top-0 right-0 flex flex-col items-end mt-4 mr-4 anim-element" data-tx="500">
             <div className="w-28 h-6 md:w-64 md:h-10"
               style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
             >
@@ -163,10 +171,10 @@ const IndexPage = (props: IndexPageProps) => {
           {/* UNDER CONSTRUCTION */}
           <div
             className="inline-block font-bold md:absolute left-0 top-0 bg xl:mt-0 anim-element md:top-[18vh] lg:top-[30vh]" data-tx="-500">
+            <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 absolute right-12 -mt-24 rotate-90 fill-primary" />
             <div className="inline-block justify-start xl:justify-end pl-6 xl:pl-20 pr-2 md:pr-8 py-2 md:py-6 bg-base-100 relative"
               style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
             >
-              <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 fill-primary absolute right-0 -mt-24 rotate-90" />
               <div className="flex items-start justify-start p-2 bg-base-100">
                 <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none tracking-tighter text-yellow-400">CAUTION</h1>
               </div>
@@ -189,7 +197,7 @@ const IndexPage = (props: IndexPageProps) => {
             </div>
           </div>
 
-          {/* cards */}
+          {/* info cards */}
           <div className="md:absolute flex flex-col items-center md:items-end right-0 mt-8 md:mt-0 md:mr-16 
         lg:mr-24 xl:mr-40 md:anim-element md:top-[45vh] lg:top-[30vh]"
             data-ty="500"
@@ -209,46 +217,65 @@ const IndexPage = (props: IndexPageProps) => {
             </div>
           </div>
         </div>
-        <div id="page-2" className="">
-          <PostCarousel posts={allPosts} className="md:mt-10 w-full md:w-4/5 mx-auto" />
 
-          {/* Main Form */}
-          <div className="mb-16 px-4 w-screen md:ml-16 md:w-96 absolute bottom-0 z-10">
-            <div className="inline-block mb-4">
-              <h1 className="uppercase text-base-100 text-5xl font-bold text-right shadow-primary shadow-outline">Let's work <br />together</h1>
+        {/* SECOND PAGE */}
+        <Element id="page-2-container" name="container">
+
+          <div className="flex flex-col items-center md:items-start">
+            <PostCarousel posts={allPosts} className="md:mt-10 w-full md:w-4/5 mx-auto" />
+
+            {/* left block */}
+            <div className="bg-primary transform rotate-45 absolute
+          w-[100rem] h-[100rem]
+          left-[-110rem] md:left-[-70rem] xl:left-[-60rem]
+          top-[100vh] md:top-auto 
+          md:bottom-[-40rem] 
+          ">
             </div>
-            <form className="form-control uppercase">
-              <label className="label">
-                <span className="text-base-100">Name</span>
-              </label>
-              <input type="text" placeholder="" className="input input-line input-back input-transparent" />
-              <label className="label">
-                <span className="text-base-100">Email</span>
-              </label>
-              <input type="email" placeholder="" className="input input-line input-back input-transparent" />
-              <label className="label">
-                <span className="text-base-100">Tell me a little what you need</span>
-              </label>
-              <div className="relative">
-                <textarea placeholder="" className="skew-textarea w-full textarea textarea-bordered textarea-back textarea-transparent h-40" rows={6}
-                />
-                <button type="submit" className="btn absolute bottom-0 right-0 w-32">Submit</button>
+
+            {/* right block */}
+            <div className="bg-primary -rotate-45 absolute
+          w-[200rem] h-[200rem]
+          left-[3rem] md:left-[20rem] xl:left-[30rem]
+          top-[110vh] md:top-auto
+          md:bottom-[-170rem]">
+            </div>
+
+            {/* Main Form */}
+            <div className="mb-16 px-4 w-screen md:w-96 md:ml-16 mt-[30rem] lg:mt-0 relative">
+              <div className="inline-block mb-4">
+                <h1 className="uppercase text-base-100 text-5xl font-bold text-right shadow-primary shadow-outline">Let's work <br />together</h1>
               </div>
-            </form>
+              <form className="form-control uppercase">
+                <label className="label">
+                  <span className="text-base-100">Name</span>
+                </label>
+                <input type="text" placeholder="" className="input input-line input-back input-transparent" />
+                <label className="label">
+                  <span className="text-base-100">Email</span>
+                </label>
+                <input type="email" placeholder="" className="input input-line input-back input-transparent" />
+                <label className="label">
+                  <span className="text-base-100">Tell me a little what you need</span>
+                </label>
+                <div className="relative">
+                  <textarea placeholder="" className="skew-textarea w-full textarea textarea-bordered textarea-back textarea-transparent h-40" rows={6}
+                  />
+                  <button type="submit" className="btn absolute bottom-0 right-0 w-32">Submit</button>
+                </div>
+              </form>
+            </div>
+            <Element name="page-2">
+              <div className="relative md:absolute bottom-0
+            md:left-[30rem] lg:left-auto lg:right-0 
+            my-16 lg:mr-8 xl:mr-16 ">
+                <Logo className="fill-base-100 w-48 md:w-48 lg:w-40 2xl:w-80" />
+              </div>
+            </Element>
           </div>
-
-          {/* left block */}
-          <div className="bg-primary transform rotate-45 absolute 
-          w-[100rem] h-[100rem] left-[-110rem] md:left-[-70rem] top-[100vh] md:top-auto md:bottom-[-40rem] sm:right-[15rem] md:right-[15rem] lg:right-[21rem]">
-          </div>
-
-          {/* right block */}
-          <div className="bg-primary -rotate-45 absolute 
-          w-[200rem] h-[200rem] left-[3rem] md:left-[12rem] top-[110vh] md:top-auto md:bottom-[-170rem] sm:left-[18rem] lg:left-[20rem]">
-          </div>
-        </div>
+        </Element>
       </div>
-    </Layout >
+    </Layout>
   )
 }
 

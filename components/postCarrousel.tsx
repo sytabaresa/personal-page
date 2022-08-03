@@ -6,7 +6,7 @@ import Post from "../types/post"
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../tailwind.config.js'
 
-const fullConfig = resolveConfig(tailwindConfig)
+const fullConfig = resolveConfig(tailwindConfig as any)
 
 // const { slidesToShowPlugin } = dynamic(
 //     () => import('@brainhubeu/react-carousel').then(mod => {

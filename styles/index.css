@@ -92,19 +92,16 @@
 @import"styled/typography.css";
 
 @layer utilities {
-    @variants responsive {
-
-        .anim-element {
-	        transform: translate(var(--tx), var(--ty)) rotate(var(--r));
-	        will-change: transform;
-        }
-        
-        .shadow-outline {
-	        text-shadow: -1px 1px 2px var(--tw-shadow-color),
-				  1px 1px 2px var(--tw-shadow-color),
-				  1px -1px 0 var(--tw-shadow-color),
-				  -1px -1px 0 var(--tw-shadow-color);
-        }
+    .anim-element {
+	    transform: translate(var(--tx), var(--ty)) rotate(var(--r));
+	    will-change: transform;
+    }
+    
+    .shadow-outline {
+	    text-shadow: -1px 1px 2px var(--tw-shadow-color),
+			  1px 1px 2px var(--tw-shadow-color),
+			  1px -1px 0 var(--tw-shadow-color),
+			  -1px -1px 0 var(--tw-shadow-color);
     }
 }
 

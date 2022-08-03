@@ -245,7 +245,7 @@ const IndexPage = (props: IndexPageProps) => {
             {/* Main Form */}
             <div className="mb-16 px-4 w-screen md:w-96 md:ml-16 mt-[30rem] lg:mt-0 relative">
               <div className="inline-block mb-4">
-                <h1 className="uppercase text-base-100 text-5xl font-bold text-right shadow-primary shadow-outline">Let's work <br />together</h1>
+                <h1 className="uppercase text-base-100 text-5xl font-bold text-right shadow-primary shadow-outline">Let&apos;s work <br />together</h1>
               </div>
               <form className="form-control uppercase">
                 <label className="label">

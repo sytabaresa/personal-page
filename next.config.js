@@ -15,8 +15,8 @@ if (process.env.NODE_ENV === 'production') {
   plugins.push([withPWA])
   options = {
     ...options,
-    basePath: '/personal-page',
-    assetPrefix: '/personal-page'
+//    basePath: '/personal-page',
+//    assetPrefix: '/personal-page'
   }
   swcMinify: true
 }

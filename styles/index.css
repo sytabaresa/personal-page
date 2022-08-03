@@ -2,121 +2,33 @@
 @import"tailwindcss/components";
 @import"tailwindcss/utilities";
 
-/* Variables */
-@import "variables.css";
-
-/*Global*/
-@import"global/borderRadius.css";
-@import"global/fontSize.css";
-@import"global/glass.css";
-@import"global/sizing.css";
-@import"global/variables.css";
-
-/*Unstyled*/
-@import"unstyled/alert.css";
-@import"unstyled/artboard.css";
-@import"unstyled/avatar.css";
-@import"unstyled/badge.css";
-@import"unstyled/breadcrumbs.css";
-@import"unstyled/button.css";
-@import"unstyled/card.css";
-@import"unstyled/carousel.css";
-@import"unstyled/checkbox.css";
-@import"unstyled/collapse.css";
-@import"unstyled/countdown.css";
-@import"unstyled/divider.css";
-@import"unstyled/drawer.css";
-@import"unstyled/dropdown.css";
-@import"unstyled/footer.css";
-@import"unstyled/form.css";
-@import"unstyled/hero.css";
-@import"unstyled/indicator.css";
-@import"unstyled/input.css";
-@import"unstyled/kbd.css";
-@import"unstyled/link.css";
-@import"unstyled/mask.css";
-@import"unstyled/menu.css";
-@import"unstyled/mockup.css";
-@import"unstyled/modal.css";
-@import"unstyled/navbar.css";
-@import"unstyled/progress.css";
-@import"unstyled/radio.css";
-@import"unstyled/range.css";
-@import"unstyled/select.css";
-@import"unstyled/stack.css";
-@import"unstyled/stat.css";
-@import"unstyled/steps.css";
-@import"unstyled/tab.css";
-@import"unstyled/table.css";
-@import"unstyled/textarea.css";
-@import"unstyled/toggle.css";
-@import"unstyled/tooltip.css";
-
-/* styled*/
-@import"styled/alert.css";
-@import"styled/avatar.css";
-@import"styled/breadcrumbs.css";
-@import"styled/button.css";
-@import"styled/badge.css";
-@import"styled/card.css";
-@import"styled/carousel.css";
-@import"styled/checkbox.css";
-@import"styled/collapse.css";
-@import"styled/countdown.css";
-@import"styled/divider.css";
-@import"styled/drawer.css";
-@import"styled/dropdown.css";
-@import"styled/footer.css";
-@import"styled/form.css";
-@import"styled/hero.css";
-@import"styled/input.css";
-@import"styled/kbd.css";
-@import"styled/link.css";
-@import"styled/mask.css";
-@import"styled/menu.css";
-@import"styled/mockup.css";
-@import"styled/modal.css";
-@import"styled/navbar.css";
-@import"styled/progress.css";
-@import"styled/radio.css";
-@import"styled/range.css";
-@import"styled/select.css";
-@import"styled/stack.css";
-@import"styled/stat.css";
-@import"styled/steps.css";
-@import"styled/tab.css";
-@import"styled/table.css";
-@import"styled/textarea.css";
-@import"styled/toggle.css";
-@import"styled/tooltip.css";
-@import"styled/typography.css";
-
 @layer utilities {
     .anim-element {
-	    transform: translate(var(--tx), var(--ty)) rotate(var(--r));
-	    will-change: transform;
+        transform: translate(var(--tx), var(--ty)) rotate(var(--r));
+        will-change: transform;
     }
-    
+
     .shadow-outline {
-	    text-shadow: -1px 1px 2px var(--tw-shadow-color),
-			  1px 1px 2px var(--tw-shadow-color),
-			  1px -1px 0 var(--tw-shadow-color),
-			  -1px -1px 0 var(--tw-shadow-color);
+        text-shadow: -1px 1px 2px var(--tw-shadow-color),
+            1px 1px 2px var(--tw-shadow-color),
+            1px -1px 0 var(--tw-shadow-color),
+            -1px -1px 0 var(--tw-shadow-color);
     }
 }
 
 .anchor {
-	position: absolute;
-	top: 100vh;
-	width: 20px;
-	height: 4px;
-	background: currentcolor;
-  	opacity: 0;
+    position: absolute;
+    top: 100vh;
+    width: 20px;
+    height: 4px;
+    background: currentcolor;
+    opacity: 0;
 }
 
 .skew-textarea {
-	left: 0;
-	&::before {
+    left: 0;
+
+    &::before {
         position: absolute;
         left: -1px;
         top: -1px;
@@ -126,20 +38,32 @@
     }
 
     &::after {
-		position: absolute;
-		left: -2px;
+        position: absolute;
+        left: -2px;
         top: -2px;
         content: '';
         border-top: 70px solid silver;
         border-right: 70px solid transparent;
-    }	
+    }
 }
 
 
 .BrainhubCarouselItem--active {
-    @apply !opacity-100;
+    @apply  !opacity-100;
 }
 
 .BrainhubCarouselItem {
     @apply opacity-30 !items-start;
+}
+
+.btn-outline-primary {
+    @apply btn btn-outline btn-primary m-2 !text-white border-primary hover:bg-primary hover:border-primary;
+}
+
+.textarea-primary {
+    @apply textarea textarea-bordered placeholder-base-100 bg-transparent border-base-100 text-base-100 border-2;
+}
+
+.input-primary {
+    @apply input input-ghost bg-transparent border-base-100 focus:text-base-100 border-b-2 border-t-0 border-x-0 focus:outline-none;
 }

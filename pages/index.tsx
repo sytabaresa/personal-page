@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { ButtonHTMLAttributes, useEffect } from 'react';
 import Layout from '../components/Layout'
 import { Arrow, Logo, Cross, NextArrow, Triangle } from '../components/svg'
 import * as basicScroll from 'basicscroll'
@@ -9,7 +9,10 @@ import Post from '../types/post';
 import { animateScroll as scroll, Element } from "react-scroll"
 
 
-const CardButton = (props: any) => <button className="btn btn-outline btn-primary-white !bg-base-100 m-2 !w-24 !h-24 md:!w-28 md:!h-28 xl:!w-36 xl:!h-36 xl:text-xl" {...props}></button>
+const CardButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) =>
+  <button className="btn-outline-primary 
+  !uppercase !w-24 !h-24 md:!w-28 md:!h-28 
+  xl:!w-36 xl:!h-36 xl:text-xl" {...props}></button>
 
 interface IndexPageProps {
   allPosts: Post[]
@@ -127,7 +130,8 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* Triangles 1 */}
-          <div className="absolute -z-10 transform-gpu scale-50 md:scale-100 p-4 top-[75vh] md:top-0 right-[20%] md:right-[50%]">
+
+          <div className="absolute transform-gpu scale-50 md:scale-100 p-4 top-[75vh] md:top-0 right-[20%] md:right-[50%]">
             <div className="anim-element" data-ty="-400">
               <Triangle className="absolute w-52 h-52 origin-center rotate-180 stroke-primary stroke-[8px]" />
             </div>
@@ -137,7 +141,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* Triangles 2 */}
-          <div className="absolute -z-10 transform-gpu scale-50 md:scale-100 p-4 top-[60vh] md:top-[70vh] left-[10%] md:left-[20%]">
+          <div className="absolute transform-gpu scale-50 md:scale-100 p-4 top-[60vh] md:top-[70vh] left-[10%] md:left-[20%]">
             <div className="anim-element" data-tx="400">
               <Triangle className="absolute w-52 h-52 origin-center -rotate-90 stroke-primary stroke-[12px]" />
             </div>
@@ -208,12 +212,20 @@ const IndexPage = (props: IndexPageProps) => {
             </h2>
             <div className="inline-block mt-8">
               <div>
-                <CardButton>github</CardButton>
-                <CardButton>linkedin</CardButton>
+                <a href="https://github.com/sytabaresa">
+                  <CardButton>github</CardButton>
+                </a>
+                <a href="https://www.linkedin.com/in/sytabaresa/">
+                  <CardButton>linkedin</CardButton>
+                </a>
               </div>
               <div>
-                <CardButton>twitter</CardButton>
-                <CardButton>email</CardButton>
+                <a href="https://twitter.com/sytabares">
+                  <CardButton>twitter</CardButton>
+                </a>
+                <a href="mailto:sytabaresa@gmail.com">
+                  <CardButton>email</CardButton>
+                </a>
               </div>
             </div>
           </div>
@@ -251,21 +263,21 @@ const IndexPage = (props: IndexPageProps) => {
                 <label className="label">
                   <span className="text-base-100">Name</span>
                 </label>
-                <input type="text" placeholder="" className="input input-line input-back input-transparent" />
+                <input type="text" placeholder="" className="input-primary" />
                 <label className="label">
                   <span className="text-base-100">Email</span>
                 </label>
-                <input type="email" placeholder="" className="input input-line input-back input-transparent" />
+                <input type="email" placeholder="" className="input-primary mb-10" />
                 {/* <label className="label">
                   <span className="text-base-100">Tell me a little what you need</span>
                 </label> */}
                 <div className="relative">
                   <textarea
                     placeholder="Tell me a little what you need<"
-                    className="relative w-full textarea textarea-bordered textarea-back textarea-transparent h-40"
+                    className="relative w-full textarea-primary h-40"
                     rows={6}
                   />
-                  <button type="submit" className="btn absolute bottom-0 right-0 w-32">Send</button>
+                  <button type="submit" className="btn uppercase absolute bottom-0 right-0 w-32">Send (WIP)</button>
                 </div>
               </form>
             </div>

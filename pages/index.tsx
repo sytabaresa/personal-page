@@ -90,7 +90,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* cross 2 */}
-          <div className="absolute hidden md:grid left-0 ml-4 grid-cols-2 gap-8 top-[75vh]">
+          <div className="absolute hidden md:grid left-0 ml-4 grid-cols-2 gap-8 top-[75vh] anim-element" data-ty="400">
             <Cross />
             <Cross />
             <Cross />
@@ -105,7 +105,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* cross 4 */}
-          <div className="absolute hidden md:grid right-0 mt-4 mr-4 grid-cols-2 gap-8 top-[80vh]" data-rellax-speed="8">
+          <div className="absolute hidden md:grid right-0 mt-4 mr-4 grid-cols-2 gap-8 top-[80vh] anim-element" data-ty="-400">
             <Cross className="opacity-0" />
             <Cross />
             <Cross />
@@ -131,20 +131,20 @@ const IndexPage = (props: IndexPageProps) => {
             <div className="anim-element" data-ty="-400">
               <Triangle className="absolute w-52 h-52 origin-center rotate-180 stroke-primary stroke-[8px]" />
             </div>
-            <div>
+            <div className="anim-element" data-ty="400">
               <Triangle className="absolute w-52 h-52 origin-center transform ml-16 mt-28 stroke-primary stroke-[8px]" />
             </div>
           </div>
 
           {/* Triangles 2 */}
           <div className="absolute -z-10 transform-gpu scale-50 md:scale-100 p-4 top-[60vh] md:top-[70vh] left-[10%] md:left-[20%]">
-            <div>
+            <div className="anim-element" data-tx="400">
               <Triangle className="absolute w-52 h-52 origin-center -rotate-90 stroke-primary stroke-[12px]" />
             </div>
-            <div>
+            <div className="anim-element" data-tx="-400">
               <Triangle className="absolute w-20 h-20 origin-center rotate-90 transform ml-24 mt-32 stroke-primary stroke-[30px]" />
             </div>
-            <div>
+            <div className="anim-element" data-tx="-200">
               <Triangle className="absolute w-20 h-20 origin-center rotate-90 transform -ml-24 mt-4 stroke-primary stroke-[30px]" />
             </div>
           </div>
@@ -202,7 +202,8 @@ const IndexPage = (props: IndexPageProps) => {
         lg:mr-24 xl:mr-40 md:anim-element md:top-[45vh] lg:top-[30vh]"
             data-ty="500"
           >
-            <h2 className="text-6xl md:text-7xl xl:text-8xl font-sans font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0">
+            <h2 className="text-6xl md:text-7xl xl:text-8xl font-sans
+             font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0 anim-element" data-tx="400">
               Sebastian<br />Tabares.
             </h2>
             <div className="inline-block mt-8">
@@ -255,13 +256,16 @@ const IndexPage = (props: IndexPageProps) => {
                   <span className="text-base-100">Email</span>
                 </label>
                 <input type="email" placeholder="" className="input input-line input-back input-transparent" />
-                <label className="label">
+                {/* <label className="label">
                   <span className="text-base-100">Tell me a little what you need</span>
-                </label>
+                </label> */}
                 <div className="relative">
-                  <textarea placeholder="" className="skew-textarea w-full textarea textarea-bordered textarea-back textarea-transparent h-40" rows={6}
+                  <textarea
+                    placeholder="Tell me a little what you need<"
+                    className="relative w-full textarea textarea-bordered textarea-back textarea-transparent h-40"
+                    rows={6}
                   />
-                  <button type="submit" className="btn absolute bottom-0 right-0 w-32">Submit</button>
+                  <button type="submit" className="btn absolute bottom-0 right-0 w-32">Send</button>
                 </div>
               </form>
             </div>

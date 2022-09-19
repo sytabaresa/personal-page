@@ -11,7 +11,7 @@
     "dependencies": {
         "@brainhubeu/react-carousel": "^2.0.4",
         "basicscroll": "^3.0.4",
-        "daisyui": "^2.20.0",
+        "daisyui": "^2.28.0",
         "gray-matter": "^4.0.3",
         "next": "^12.2.3",
         "next-i18next": "^11.3.0",

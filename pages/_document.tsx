@@ -54,6 +54,11 @@ class Document extends NextDocument {
                 <body className="antialiased overflow-hidden bg-base-100 overflow-y-auto">
                     <Main />
                     <NextScript />
+                    {/* <!-- Cloudflare Web Analytics --> */}
+                    <script defer
+                        src='https://static.cloudflareinsights.com/beacon.min.js'
+                        data-cf-beacon='{"token": "74a3a44b4dc245f695dc97f777a65f75"}'></script>
+                    {/* <!-- End Cloudflare Web Analytics --> */}
                 </body>
             </Html>
         )

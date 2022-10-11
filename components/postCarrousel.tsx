@@ -1,116 +1,50 @@
-import React, { Suspense, useState } from 'react';
-import { slidesToShowPlugin, autoplayPlugin, arrowsPlugin, Dots, CarouselProps } from '@brainhubeu/react-carousel';
+import React, { Suspense, useEffect, useState } from 'react';
 import '@brainhubeu/react-carousel/lib/style.css';
-import dynamic from 'next/dynamic';
 import Post from "../types/post"
-import resolveConfig from 'tailwindcss/resolveConfig'
-import tailwindConfig from '../tailwind.config.js'
+import { useCarousel } from './carousel';
 
-const fullConfig = resolveConfig(tailwindConfig as any)
-
-// const { slidesToShowPlugin } = dynamic(
-//     () => import('@brainhubeu/react-carousel').then(mod => {
-//         return {
-//             slidesToShowPlugin: mod.slidesToShowPlugin
-//         } as any
-//     }),
-//     { ssr: false }
-// );
-
-const Carousel = dynamic(
-    () => import('@brainhubeu/react-carousel') as any,
-    { ssr: false },
-) as unknown as (props: CarouselProps) => JSX.Element
 interface PostCarouselProps extends React.HTMLAttributes<HTMLDivElement> {
     posts: Post[]
 }
 const PostCarousel = (props: PostCarouselProps) => {
     const { className, ...rest } = props
-    const screens: any = fullConfig!.theme!.screens!
 
-    const [slideNum, setSlideNum] = useState(0)
+    const { handlers, current, scrollTo, useInfinite } = useCarousel()
     const delay = 7000
 
-    const slides = props.posts.map((p, i) => (
-        <div className="w-96" key={i}>
-            <div className="border-8 border-primary w-96 h-96">
-                <img className="w-full h-full" src={p.coverImage} alt={p.slug} />
-            </div>
-            <div className="prose-sm">
-                <h1 className="text-primary">{p.title}</h1>
-                <p className="text-white">{p.excerpt.slice(50)}</p>
+    const slides = (current: number, active: boolean) => {
+        const p = props.posts[current % (props.posts.length - 1)]
+        // console.log(p, current, active)
+        return p && <div
+            className={`carousel-item w-1/3 ${active ? '' : 'opacity-50'}`}
+        // key={i}
+        >
+            <div className='w-60 cursor-pointer' onClick={() => scrollTo(current)}>
+                <div className="border-8 border-primary w-96 h-96 mx-auto">
+                    <img className="w-full h-full" src={p.coverImage} alt={p.slug} />
+                </div>
+                <div className="prose-sm">
+                    <h1 className="text-primary">{p.title}</h1>
+                    <p className="text-white">{p.excerpt.slice(50)}</p>
+                </div>
             </div>
         </div>
-    ))
-
-    const onChange = (value: number) => {
-        // console.log(value)
-        setSlideNum(value)
     }
-    return <div className={`flex flex-col items-center ${className}`} {...rest}>
-        <Suspense fallback={`Loading...`}>
-            <Carousel plugins={[
-                'infinite',
-                'clickToChange',
-                'centered',
-                // 'arrows',
-                {
-                    resolve: slidesToShowPlugin,
-                    options: {
-                        numberOfSlides: 3
-                    }
-                },
-                {
-                    resolve: autoplayPlugin,
-                    options: {
-                        interval: delay,
-                    }
-                },
-            ]}
-                breakpoints={{
-                    [screens['md'].split('px')[0]]: {
-                        plugins: [
-                            'infinite',
-                            // 'arrows',
-                            {
-                                resolve: slidesToShowPlugin,
-                                options: {
-                                    numberOfSlides: 1
-                                }
-                            },
-                            {
-                                resolve: autoplayPlugin,
-                                options: {
-                                    interval: delay,
-                                }
-                            },
-                            // {WW
-                            //     resolve: arrowsPlugin,
-                            //     options: {
-                            //         arrowLeft: <button>{"<"}</button>,
-                            //         arrowLeftDisabled: <button>{"<"}</button>,
-                            //         arrowRight: <button>{">"}</button>,
-                            //         arrowRightDisabled: <button>{">"}</button>,
-                            //         addArrowClickHandler: true,
-                            //     }
-                            // }
-                        ]
-                    }
-                }}
-                slides={slides}
-                value={slideNum}
-                onChange={onChange}
-                className="w-full"
-            // {...props}
-            />
-        </Suspense>
-        <div className="flex mt-6 md:hidden">
-            {props.posts.map((_, i) => {
-                const slideNumTrunc = slideNum % slides.length
-                return <div key={i} className={`rounded-full w-4 h-4 mx-2 ${slideNumTrunc == i ? 'bg-white' : 'bg-primary'}`} onClick={() => onChange(i)}></div>
-            })}
+    const sections = useInfinite(slides, 4)
+
+    console.log(current, sections)
+
+    return <>
+        <button onClick={() => scrollTo(0)} className="bg-red-400"> Scroll</button>
+        <div
+            className={`my-carousel carousel carousel-center ${className}`}
+            {...rest}
+            {...handlers}
+        >
+            {sections}
         </div>
-    </div>
+    </>
+
 }
 
 export default PostCarousel;

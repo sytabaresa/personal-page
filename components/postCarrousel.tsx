@@ -10,7 +10,7 @@ interface PostCarouselProps extends React.HTMLAttributes<HTMLDivElement> {
 const PostCarousel = (props: PostCarouselProps) => {
     const { className, ...rest } = props
 
-    const { handlers, current, scrollTo, useInfinite } = useCarousel()
+    const { handlers, current, scrollTo, useInfinite } = useCarousel({ debug: true })
     const delay = 7000
 
     const slides = (current: number, active: boolean) => {
@@ -20,8 +20,8 @@ const PostCarousel = (props: PostCarouselProps) => {
             className={`carousel2-item  ${active ? '' : 'opacity-50'}`}
         // key={i}
         >
-            <div className='w-96 max-w-[100vw] md:mx-4' onClick={() => scrollTo(current-1)} >
-                <div className="border-8 border-primary w-96 max-w-[100vw] h-96 mx-auto">
+            <div className='w-[26rem] max-w-[100vw] md:mx-4' onClick={() => scrollTo(current - 1)} >
+                <div className="border-8 border-primary w-[26rem] max-w-[100vw] h-96 mx-auto">
                     <img className="w-full h-full object-cover" src={p.coverImage} alt={p.slug} />
                 </div>
                 <div className="prose-sm">
@@ -32,10 +32,10 @@ const PostCarousel = (props: PostCarouselProps) => {
         </div>
     }
     // const sections = useInfinite(slides, 4)
-    const sections = range(12).map(i => slides(i, current + 1 == i))
-    // const sections = useInfinite(range(3).map(i => slides(i, true)))
+    // const sections = range(12).map(i => slides(i, current + 1 == i))
+    const sections = useInfinite(range(4).map(i => slides(i, true)), 4)
 
-    console.log(current, sections)
+    // console.log(current, sections)
 
     return <>
         {/* <button onClick={() => scrollTo(0)} className="bg-red-400"> Scroll</button> */}

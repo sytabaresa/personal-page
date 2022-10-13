@@ -131,7 +131,7 @@ const IndexPage = (props: IndexPageProps) => {
 
           {/* Triangles 1 */}
 
-          <div className="absolute transform-gpu scale-50 md:scale-100 p-4 top-[75vh] md:top-0 right-[20%] md:right-[50%]">
+          <div className="-z-10 absolute transform-gpu scale-50 md:scale-100 p-4 top-[75vh] md:top-0 right-[25%] md:right-[50%]">
             <div className="anim-element" data-ty="-400">
               <Triangle className="absolute w-52 h-52 origin-center rotate-180 stroke-primary stroke-[8px]" />
             </div>
@@ -141,7 +141,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* Triangles 2 */}
-          <div className="absolute transform-gpu scale-50 md:scale-100 p-4 top-[60vh] md:top-[70vh] left-[10%] md:left-[20%]">
+          <div className="-z-10 absolute transform-gpu scale-50 md:scale-100 p-4 top-[60vh] md:top-[70vh] left-[10%] md:left-[20%]">
             <div className="anim-element" data-tx="400">
               <Triangle className="absolute w-52 h-52 origin-center -rotate-90 stroke-primary stroke-[12px]" />
             </div>
@@ -174,7 +174,7 @@ const IndexPage = (props: IndexPageProps) => {
 
           {/* UNDER CONSTRUCTION */}
           <div
-            className="inline-block font-bold md:absolute left-0 top-0 bg xl:mt-0 anim-element md:top-[18vh] lg:top-[30vh]" data-tx="-500">
+            className="inline-block font-bold md:absolute mt-8 md:mt-0 left-0 top-[2vh] bg xl:mt-0 anim-element md:top-[18vh] lg:top-[30vh]" data-tx="-500">
             <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 absolute right-12 -mt-24 rotate-90 fill-primary" />
             <div className="inline-block justify-start xl:justify-end pl-6 xl:pl-20 pr-2 md:pr-8 py-2 md:py-6 bg-base-100 relative"
               style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}

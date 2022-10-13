@@ -1,7 +1,8 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import '@brainhubeu/react-carousel/lib/style.css';
 import Post from "../types/post"
-import { useCarousel } from './carousel';
+import { useCarousel } from './useCarousel';
+import { range } from 'lodash';
 
 interface PostCarouselProps extends React.HTMLAttributes<HTMLDivElement> {
     posts: Post[]
@@ -16,28 +17,30 @@ const PostCarousel = (props: PostCarouselProps) => {
         const p = props.posts[current % (props.posts.length - 1)]
         // console.log(p, current, active)
         return p && <div
-            className={`carousel-item w-1/3 ${active ? '' : 'opacity-50'}`}
+            className={`carousel2-item  ${active ? '' : 'opacity-50'}`}
         // key={i}
         >
-            <div className='w-60 cursor-pointer' onClick={() => scrollTo(current)}>
-                <div className="border-8 border-primary w-96 h-96 mx-auto">
-                    <img className="w-full h-full" src={p.coverImage} alt={p.slug} />
+            <div className='w-96 max-w-[100vw] md:mx-4' onClick={() => scrollTo(current-1)} >
+                <div className="border-8 border-primary w-96 max-w-[100vw] h-96 mx-auto">
+                    <img className="w-full h-full object-cover" src={p.coverImage} alt={p.slug} />
                 </div>
                 <div className="prose-sm">
                     <h1 className="text-primary">{p.title}</h1>
-                    <p className="text-white">{p.excerpt.slice(50)}</p>
+                    <p className="text-white text-lg">{p.excerpt.slice(50)}</p>
                 </div>
             </div>
         </div>
     }
-    const sections = useInfinite(slides, 4)
+    // const sections = useInfinite(slides, 4)
+    const sections = range(12).map(i => slides(i, current + 1 == i))
+    // const sections = useInfinite(range(3).map(i => slides(i, true)))
 
     console.log(current, sections)
 
     return <>
-        <button onClick={() => scrollTo(0)} className="bg-red-400"> Scroll</button>
+        {/* <button onClick={() => scrollTo(0)} className="bg-red-400"> Scroll</button> */}
         <div
-            className={`my-carousel carousel carousel-center ${className}`}
+            className={`relative carousel2 ${className}`}
             {...rest}
             {...handlers}
         >

@@ -14,6 +14,25 @@
             1px -1px 0 var(--tw-shadow-color),
             -1px -1px 0 var(--tw-shadow-color);
     }
+
+    /* hide scrollbar and set overflow */
+    .carousel2 {
+        display: flex;
+        position: relative;
+        overflow-x: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .carousel2::-webkit-scrollbar {
+        display: none;
+    }
+
+    .carousel2-item {
+        box-sizing: content-box;
+        display: flex;
+        flex: none;
+    }
 }
 
 .anchor {
@@ -57,7 +76,7 @@
 }
 
 .btn-outline-primary {
-    @apply btn btn-outline btn-primary m-2 !text-white border-primary hover:bg-primary hover:border-primary;
+    @apply btn btn-outline btn-primary m-2 bg-base-100 !text-white border-primary hover:bg-primary hover:border-primary;
 }
 
 .textarea-primary {

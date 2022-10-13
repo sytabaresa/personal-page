@@ -51,7 +51,7 @@ class Document extends NextDocument {
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
                     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Montserrat:wght@300;400;600;700&display=optional" rel="stylesheet" />
                 </Head >
-                <body className="antialiased overflow-hidden bg-base-100 overflow-y-auto">
+                <body className="antialiased overflow-hidden overflow-y-auto">
                     <Main />
                     <NextScript />
                     {/* <!-- Cloudflare Web Analytics --> */}

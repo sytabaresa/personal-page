@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@brainhubeu/react-carousel": "^2.0.4",
+        "@cloudflare/pages-plugin-static-forms": "^1.0.0",
         "basicscroll": "^3.0.4",
         "daisyui": "^2",
         "gray-matter": "^4.0.3",
@@ -20,6 +21,7 @@
         "prejss": "^1.4.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-new-headless-carousel": "https://github.com/sytabaresa/react-new-headless-carousel.git",
         "react-scroll": "^1.8.7",
         "remark": "^14.0.2",
         "remark-html": "^15.0.1"
@@ -27,6 +29,7 @@
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.4",
         "@types/brainhubeu__react-carousel": "^2.0.5",
+        "@types/lodash": "^4.14.186",
         "@types/node": "^18.6.3",
         "@types/react": "17.0.40",
         "@types/react-dom": "^18.0.6",

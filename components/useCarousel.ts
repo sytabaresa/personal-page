@@ -15,7 +15,7 @@ export const useCarousel = (options: useCarouselOptions = {}) => {
     const [pressed, setPressed] = useState(false)
     const [stopScrolling, setStopScrolling] = useState(false)
 
-    const [scrollingTimer, setScrollingTimer] = useState({ s: null, stop: false })
+    const [scrollingTimer, setScrollingTimer] = useState({ s: null as any, stop: false })
 
     const [_current, setCurrent] = useState(0)
     const [_preload, setPreload] = useState(1)
@@ -105,7 +105,7 @@ export const useCarousel = (options: useCarouselOptions = {}) => {
         onScroll: (e: any) => {
 
             // Clear our timeout throughout the scroll
-            clearTimeout(scrollingTimer.s);
+            clearTimeout(scrollingTimer.s as any);
 
             // Set a timeout to run after scrolling ends
             setScrollingTimer({
@@ -113,7 +113,7 @@ export const useCarousel = (options: useCarouselOptions = {}) => {
                     // Run the callback
                     setStopScrolling(true)
                 }, 66)
-            })
+            } as any)
 
             // Grab the position yo are scrolled to (the top of the viewport)
             let posLeft = e.currentTarget.scrollLeft;
@@ -132,7 +132,7 @@ export const useCarousel = (options: useCarouselOptions = {}) => {
         },
     }
 
-    const _scrollTo = (n: number, sections, options = {}) => {
+    const _scrollTo = (n: number, sections: any[], options = {}) => {
         // console.log(options)
         if (targetRef.current && n >= 0 && n < sections.length) {
             log("go to item " + n)

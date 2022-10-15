@@ -10,7 +10,7 @@ interface PostCarouselProps extends React.HTMLAttributes<HTMLDivElement> {
 const PostCarousel = (props: PostCarouselProps) => {
     const { className, ...rest } = props
 
-    const { handlers, current, scrollTo, useInfinite } = useCarousel({ debug: true })
+    const { handlers, current, scrollTo, useInfinite } = useCarousel()
     const delay = 7000
 
     const slides = (current: number, active: boolean) => {

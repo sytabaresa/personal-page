@@ -6,7 +6,7 @@ import * as basicScroll from 'basicscroll'
 import { getAllPosts } from '../lib/api';
 import PostCarousel from '../components/postCarrousel';
 import Post from '../types/post';
-import { animateScroll as scroll, Element } from "react-scroll"
+import { animateScroll as scroll, Element, Events } from "react-scroll"
 
 
 const CardButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) =>
@@ -64,8 +64,18 @@ const IndexPage = (props: IndexPageProps) => {
 
     anims.forEach(e => e.start())
 
+    // Events.scrollEvent.register("begin", function () {
+    //   console.log("begin", arguments);
+    // });
+
+    // Events.scrollEvent.register("end", function () {
+    //   console.log("end", arguments);
+    // });
+
     return () => {
       anims.forEach(e => e.destroy())
+      // Events.scrollEvent.remove("begin");
+      // Events.scrollEvent.remove("end");
     }
   }, [])
 
@@ -120,13 +130,16 @@ const IndexPage = (props: IndexPageProps) => {
 
 
           {/* Next arrow */}
-          <div className="absolute left-1/2 top-[85vh] cursor-pointer" onClick={() => scroll.scrollTo('page-2' as any, {
-            duration: 1500,
-            delay: 100,
-            smooth: 'easeInOutQuint',
-            containerId: 'page-2-container',
-          })}>
-            <NextArrow className="relative w-12 h-12 md:w-24 md:h-24 fill-primary -left-1/2 motion-safe:animate-bounce5s" />
+          <div className="absolute left-0 ml-4 lg:ml-0 lg:left-1/2 top-[85vh] cursor-pointer" onClick={() => {
+            scroll.scrollTo(2000, {
+              // duration: 1500,
+              delay: 100,
+              smooth: 'easeInOutQuint',
+              // containerId: 'page-2-container',
+            })
+            console.log('goto')
+          }}>
+            <NextArrow className="relative w-12 h-12 md:w-24 md:h-24 fill-primary lg:-left-1/2 motion-safe:animate-bounce5s" />
           </div>
 
           {/* Triangles 1 */}
@@ -154,7 +167,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* 2021 */}
-          <div className="absolute md:block top-0 right-0 flex flex-col items-end mt-4 mr-4 anim-element" data-tx="500">
+          <div className="absolute md:block top-0 right-0 flex flex-col items-end mt-0 ml-0 lg:mt-4 lg:ml-4 anim-element" data-tx="500">
             <div className="w-28 h-6 md:w-64 md:h-10"
               style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
             >
@@ -174,8 +187,8 @@ const IndexPage = (props: IndexPageProps) => {
 
           {/* UNDER CONSTRUCTION */}
           <div
-            className="inline-block font-bold md:absolute mt-8 md:mt-0 left-0 top-[2vh] bg xl:mt-0 anim-element md:top-[18vh] lg:top-[30vh]" data-tx="-500">
-            <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 absolute right-12 -mt-24 rotate-90 fill-primary" />
+            className="inline-block font-bold md:absolute mt-2 md:mt-0 left-0 top-[2vh] bg xl:mt-0 anim-element md:top-[18vh] lg:top-[30vh]" data-tx="-500">
+            <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 absolute right-16 -mt-20 rotate-90 fill-primary" />
             <div className="inline-block justify-start xl:justify-end pl-6 xl:pl-20 pr-2 md:pr-8 py-2 md:py-6 bg-base-100 relative"
               style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
             >
@@ -184,7 +197,7 @@ const IndexPage = (props: IndexPageProps) => {
               </div>
             </div>
             <div
-              className="text-3xl md:text-5xl xl:text-7xl flex mt-8 ml-5 xl:ml-24"
+              className="text-3xl md:text-5xl xl:text-7xl flex mt-4 ml-4 xl:ml-24"
               style={{
                 lineHeight: .8,
                 // perspective: '1px',
@@ -202,7 +215,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* info cards */}
-          <div className="md:absolute flex flex-col items-center md:items-end right-0 mt-8 md:mt-0 md:mr-16 
+          <div className="md:absolute flex flex-col items-center md:items-end right-0 mt-4 md:mt-0 md:mr-16 
         lg:mr-24 xl:mr-40 md:anim-element md:top-[45vh] lg:top-[30vh]"
             data-ty="500"
           >
@@ -232,64 +245,62 @@ const IndexPage = (props: IndexPageProps) => {
         </div>
 
         {/* SECOND PAGE */}
-        <Element id="page-2-container" name="container">
 
-          <div className="flex flex-col items-center md:items-start">
-            <PostCarousel posts={allPosts} className="md:mt-10 w-full md:w-4/5 mx-auto" />
+        <div className="flex flex-col items-center md:items-start">
+          <PostCarousel posts={allPosts} className="md:mt-10 w-full md:w-4/5 mx-auto" />
 
-            {/* left block */}
-            <div className="bg-primary transform rotate-45 absolute
+          {/* left block */}
+          <div className="bg-primary transform rotate-45 absolute
           w-[100rem] h-[100rem]
           left-[-110rem] md:left-[-70rem] xl:left-[-60rem]
           top-[100vh] md:top-auto 
           md:bottom-[-40rem] 
           ">
-            </div>
+          </div>
 
-            {/* right block */}
-            <div className="bg-primary -rotate-45 absolute
+          {/* right block */}
+          <div className="bg-primary -rotate-45 absolute
           w-[200rem] h-[200rem]
           left-[3rem] md:left-[20rem] xl:left-[30rem]
           top-[110vh] md:top-auto
           md:bottom-[-170rem]">
-            </div>
+          </div>
 
-            {/* Main Form */}
-            <div className="mb-16 px-4 w-screen md:w-96 md:ml-16 mt-[30rem] lg:mt-0 relative">
-              <div className="inline-block mb-4">
-                <h1 className="uppercase text-base-100 text-5xl font-bold text-right shadow-primary shadow-outline">Let&apos;s work <br />together</h1>
-              </div>
-              <form className="form-control uppercase">
-                <label className="label">
-                  <span className="text-base-100">Name</span>
-                </label>
-                <input type="text" placeholder="" className="input-primary" />
-                <label className="label">
-                  <span className="text-base-100">Email</span>
-                </label>
-                <input type="email" placeholder="" className="input-primary mb-10" />
-                {/* <label className="label">
+          {/* Main Form */}
+          <div className="mb-16 px-4 w-screen md:w-96 md:ml-16 mt-[30rem] lg:mt-0 relative">
+            <div className="inline-block mb-4">
+              <h1 className="uppercase text-base-100 text-5xl font-bold text-right shadow-primary shadow-outline">Let&apos;s work <br />together</h1>
+            </div>
+            <form className="form-control uppercase">
+              <label className="label">
+                <span className="text-base-100">Name</span>
+              </label>
+              <input type="text" placeholder="" className="input-primary" />
+              <label className="label">
+                <span className="text-base-100">Email</span>
+              </label>
+              <input type="email" placeholder="" className="input-primary mb-10" />
+              {/* <label className="label">
                   <span className="text-base-100">Tell me a little what you need</span>
                 </label> */}
-                <div className="relative">
-                  <textarea
-                    placeholder="Tell me a little what you need<"
-                    className="relative w-full textarea-primary h-40"
-                    rows={6}
-                  />
-                  <button type="submit" className="btn uppercase absolute bottom-0 right-0 w-32">Send (WIP)</button>
-                </div>
-              </form>
-            </div>
-            <Element name="page-2">
-              <div className="relative md:absolute bottom-0
+              <div className="relative">
+                <textarea
+                  placeholder="Tell me a little what you need<"
+                  className="relative w-full textarea-primary h-40"
+                  rows={6}
+                />
+                <button type="submit" className="btn uppercase absolute bottom-0 right-0 w-32">Send (WIP)</button>
+              </div>
+            </form>
+          </div>
+          <Element name="page-2">
+            <div className="relative md:absolute bottom-0
             md:left-[30rem] lg:left-auto lg:right-0 
             my-16 lg:mr-8 xl:mr-16 ">
-                <Logo className="fill-base-100 w-48 md:w-48 lg:w-40 2xl:w-80" />
-              </div>
-            </Element>
-          </div>
-        </Element>
+              <Logo className="fill-base-100 w-48 md:w-48 lg:w-40 2xl:w-80" />
+            </div>
+          </Element>
+        </div>
       </div>
     </Layout>
   )

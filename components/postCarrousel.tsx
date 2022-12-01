@@ -33,7 +33,7 @@ const PostCarousel = (props: PostCarouselProps) => {
     }
     // const sections = useInfinite(slides, 4)
     // const sections = range(12).map(i => slides(i, current + 1 == i))
-    const sections = useInfinite(range(4).map(i => slides(i, true)), 4)
+    const sections = useInfinite(range(4).map(i => slides(i, true, {})), 4)
 
     // console.log(current, sections)
 

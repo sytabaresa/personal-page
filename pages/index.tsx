@@ -87,9 +87,8 @@ const IndexPage = (props: IndexPageProps) => {
         id="scroll-container"
         className="text-primary relative overflow-hidden w-full "
       >
-        <div className="anchor" />
 
-        <div id="page-1" className="h-screen">
+        <div id="page-1" className="min-h-screen flex flex-col">
 
           {/* cross 1 */}
           <div className="absolute hidden md:grid top-0 left-0 mt-4 ml-4 grid-cols-2 gap-8" data-rellax-speed="8">
@@ -117,6 +116,15 @@ const IndexPage = (props: IndexPageProps) => {
             <Cross />
           </div>
 
+          <div className="absolute grid -left-[20rem] md:-left-[30rem] lg:-left-[25rem] ml-32 grid-cols-2 gap-8
+         origin-center transform rotate-180 top-[250vh] lg:top-[150vh] z-50 anim-element" data-tx="400">
+            <Cross className="stroke-base-100"/>
+            <Cross className="stroke-base-100"/>
+            <Cross className="stroke-base-100"/>
+            <Cross className="stroke-base-100 opacity-0"/>
+
+          </div>
+
           {/* cross 4 */}
           <div className="absolute hidden md:grid right-0 mt-4 mr-4 grid-cols-2 gap-8 top-[80vh] anim-element" data-ty="-400">
             <Cross className="opacity-0" />
@@ -128,16 +136,15 @@ const IndexPage = (props: IndexPageProps) => {
             <Cross />
           </div>
 
-
           {/* Next arrow */}
-          <div className="absolute left-0 ml-4 lg:ml-0 lg:left-1/2 top-[85vh] cursor-pointer" onClick={() => {
+          <div className="absolute left-0 ml-2q lg:ml-0 lg:left-1/2 top-[85vh] cursor-pointer" onClick={() => {
             scroll.scrollTo(2000, {
               // duration: 1500,
               delay: 100,
               smooth: 'easeInOutQuint',
               // containerId: 'page-2-container',
             })
-            console.log('goto')
+            // console.log('goto')
           }}>
             <NextArrow className="relative w-12 h-12 md:w-24 md:h-24 fill-primary lg:-left-1/2 motion-safe:animate-bounce5s" />
           </div>
@@ -166,86 +173,88 @@ const IndexPage = (props: IndexPageProps) => {
             </div>
           </div>
 
-          {/* 2021 */}
-          <div className="absolute md:block top-0 right-0 flex flex-col items-end mt-0 ml-0 lg:mt-4 lg:ml-4 anim-element" data-tx="500">
-            <div className="w-28 h-6 md:w-64 md:h-10"
-              style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
+          {/* 2022 */}
+          <div className="lg:flex-1 flex w-full">
+            <div className="flex-1 md:ml-36 web-page font-mono text-3xl md:text-5xl mt-4 ml-4 anim-element" data-ty="500"
+            // css={{ ...parallax(-3), top: '300px' }}
             >
+              <h2>syta.co</h2>
             </div>
-            <div className="flex items-center mt-2">
-              <div className="w-8 md:w-24 h-1 bg-primary overf"></div>
-              <h4 className="font-mono text-2xl md:text-4xl ml-4">{new Date().getFullYear()}</h4>
+            <div className="lg:mt-4 lg:mr-4 flex flex-col items-end anim-element" data-tx="500">
+              <div className="w-28 h-6 md:w-64 md:h-10"
+                style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
+              >
+              </div>
+              <div className="flex items-center mt-2">
+                <div className="w-8 md:w-24 h-1 bg-primary overf"></div>
+                <h4 className="font-mono text-2xl md:text-4xl ml-4">{new Date().getFullYear()}</h4>
+              </div>
             </div>
           </div>
 
           {/* syta.co */}
-          <div className="web-page font-mono text-3xl md:text-5xl md:mt-10 mb-4 md:my-6 ml-4 md:ml-32 lg:ml-64 md:absolute left-0 anim-element" data-ty="500"
-          // css={{ ...parallax(-3), top: '300px' }}
-          >
-            <h2>syta.co</h2>
-          </div>
 
+
+          <div className="flex-1 flex flex-col md:flex-row">
           {/* UNDER CONSTRUCTION */}
-          <div
-            className="inline-block font-bold md:absolute mt-2 md:mt-0 left-0 top-[2vh] bg xl:mt-0 anim-element md:top-[18vh] lg:top-[30vh]" data-tx="-500">
-            <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 absolute right-16 -mt-20 rotate-90 fill-primary" />
-            <div className="inline-block justify-start xl:justify-end pl-6 xl:pl-20 pr-2 md:pr-8 py-2 md:py-6 bg-base-100 relative"
-              style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
-            >
-              <div className="flex items-start justify-start p-2 bg-base-100">
-                <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none tracking-tighter text-yellow-400">CAUTION</h1>
+            <div className="relative mt-4 w-full md:w-1/2 inline-block font-bold anim-element" data-tx="-500">
+              <div className="inline-block justify-start xl:justify-end pl-6 xl:pl-20 pr-2 md:pr-8 py-2 md:py-6 bg-base-100 relative"
+                style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
+              >
+              <Arrow className="w-8 h-8 xl:w-12 xl:h-12 top-0 absolute right-32 md:right-0 -mt-20 rotate-90 fill-primary" />
+                <div className="flex items-start justify-start p-2 bg-base-100">
+                  <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none tracking-tighter text-yellow-400">CAUTION</h1>
+                </div>
               </div>
-            </div>
-            <div
-              className="text-3xl md:text-5xl xl:text-7xl flex mt-4 ml-4 xl:ml-24"
-              style={{
-                lineHeight: .8,
-                // perspective: '1px',
-                // perspectiveOrigin: '0 0',
-              }}
-            >
-              <div className="-z-10 flex">
-                <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 fill-primary" />
-                <div className="under-construction">
-                  <h1 className="">UNDER</h1>
-                  <h1 className="">CONSTRUCTION</h1>
+              <div
+                className="text-3xl md:text-5xl xl:text-7xl flex mt-4 ml-4 xl:ml-24"
+                style={{
+                  lineHeight: .8,
+                  // perspective: '1px',
+                  // perspectiveOrigin: '0 0',
+                }}
+              >
+                <div className="-z-10 flex">
+                  <Arrow className="w-8 h-8 xl:w-12 xl:h-12 mr-2 xl:mr-4 fill-primary" />
+                  <div className="under-construction">
+                    <h1 className="">UNDER</h1>
+                    <h1 className="">CONSTRUCTION</h1>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* info cards */}
-          <div className="md:absolute flex flex-col items-center md:items-end right-0 mt-4 md:mt-0 md:mr-16 
-        lg:mr-24 xl:mr-40 md:anim-element md:top-[45vh] lg:top-[30vh]"
-            data-ty="500"
-          >
-            <h2 className="text-6xl md:text-7xl xl:text-8xl font-sans
-             font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0 anim-element" data-tx="400">
-              Sebastian<br />Tabares.
-            </h2>
-            <div className="inline-block mt-8">
-              <div>
-                <a href="https://github.com/sytabaresa">
-                  <CardButton>github</CardButton>
-                </a>
-                <a href="https://www.linkedin.com/in/sytabaresa/">
-                  <CardButton>linkedin</CardButton>
-                </a>
-              </div>
-              <div>
-                <a href="https://twitter.com/sytabares">
-                  <CardButton>twitter</CardButton>
-                </a>
-                <a href="mailto:sytabaresa@gmail.com">
-                  <CardButton>email</CardButton>
-                </a>
+            {/* info cards */}
+            <div className="flex-1 w-full md:w-1/2 flex flex-col items-center md:anim-element" data-ty="500">
+              <h2 className="text-6xl md:text-7xl xl:text-8xl font-sans
+             font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0 anim-element [text-shadow:0_2px_2px_rgba(0,0,0,0.12)]" data-tx="400">
+                Sebastian<br />Tabares.
+              </h2>
+              <div className="inline-block mt-8">
+                <div>
+                  <a href="https://github.com/sytabaresa">
+                    <CardButton>github</CardButton>
+                  </a>
+                  <a href="https://www.linkedin.com/in/sytabaresa/">
+                    <CardButton>linkedin</CardButton>
+                  </a>
+                </div>
+                <div>
+                  <a href="https://twitter.com/sytabares">
+                    <CardButton>twitter</CardButton>
+                  </a>
+                  <a href="mailto:sytabaresa@gmail.com">
+                    <CardButton>email</CardButton>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* SECOND PAGE */}
+        <div className="anchor" />
 
+        {/* SECOND PAGE */}
         <div className="flex flex-col items-center md:items-start">
           <PostCarousel posts={allPosts} className="md:mt-10 w-full md:w-4/5 mx-auto" />
 

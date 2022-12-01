@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { cloneElement, useEffect, useRef, useState } from "react"
 import animateScrollTo from 'animated-scroll-to';
 // import 'robot3/debug';
 // import 'robot3/logging';
 import { action, createMachine, guard, immediate, reduce, state, transition, invoke } from "robot3";
 import { useMachine } from 'react-robot';
+import { loadGetInitialProps } from "next/dist/shared/lib/utils";
 
 const wait = (ms: number) => () => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -254,9 +255,10 @@ export const useCarousel = (options: useCarouselOptions = {}) => {
         if (preload > slides.length) {
             throw "no enought items to preload in slides"
         }
-        const slidesWithClones = [...slides]
+        let slidesWithClones = [...slides]
         slidesWithClones.unshift(...slidesWithClones.slice(slidesWithClones.length - preload, slidesWithClones.length))
         slidesWithClones.push(...slidesWithClones.slice(preload, 2 * preload))
+        slidesWithClones = slidesWithClones.map((item, i) => cloneElement(item as any, { key: i }))
 
         useEffect(() => {
             log('infinite mode')

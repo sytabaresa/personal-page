@@ -13,12 +13,12 @@ const PostCarousel = (props: PostCarouselProps) => {
     const { handlers, current, scrollTo, useInfinite } = useCarousel()
     const delay = 7000
 
-    const slides = (current: number, active: boolean) => {
+    const slides = (current: number, active: boolean, rest: Record<string, any>) => {
         const p = props.posts[current % (props.posts.length - 1)]
         // console.log(p, current, active)
         return p && <div
             className={`carousel2-item  ${active ? '' : 'opacity-50'}`}
-        // key={i}
+            {...rest}
         >
             <div className='w-[26rem] max-w-[100vw] md:mx-4' onClick={() => scrollTo(current - 1)} >
                 <div className="border-8 border-primary w-[26rem] max-w-[100vw] h-96 mx-auto">

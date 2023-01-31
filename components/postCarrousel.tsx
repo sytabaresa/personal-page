@@ -5,6 +5,7 @@ import { range } from 'lodash';
 import Flicking, { FlickingProps } from "@egjs/react-flicking";
 import { FrameGrid } from "@egjs/react-grid";
 import "@egjs/react-flicking/dist/flicking.css";
+import { AutoPlay, Fade } from "@egjs/flicking-plugins";
 
 Object.defineProperty(Array.prototype, 'flat', {
     value: function (depth = 1) {
@@ -25,9 +26,11 @@ const PostCarousel = (props: PostCarouselProps) => {
     const delay = 7000
 
     const Slide = (props: { post: Post } & HTMLAttributes<HTMLDivElement>) => {
-        const { post, ...rest } = props
+        const { post, className, ...rest } = props
         // console.log(p, current, active)
-        return <div className={`border-4 border-primary p-2 bg-cover`} style={{ backgroundImage: `url(${post.coverImage}` }}>
+        return <div className={`border-4 border-primary p-2 bg-cover ${className}`}
+            style={{ backgroundImage: `url(${post.coverImage}` }}
+            {...rest}>
             {/* <img className="w-full h-full absolute object-cover -z-10" src={} alt={post.slug} /> */}
             <h1 className="text-primary">{post.title}</h1>
             <p className="text-white">{post.excerpt}</p>
@@ -47,12 +50,17 @@ const PostCarousel = (props: PostCarouselProps) => {
         [[1]],
     ]
 
+    const plugins = [new AutoPlay({ duration: 5000, direction: "NEXT", stopOnHover: true }), new Fade()];
+
+    
     // console.log(current, sections)
     return <Flicking
         circular={true}
         useFindDOMNode={true}
-        align="prev"
+        align="center"
+        noPanelStyleOverride={true}
         className={`relative z-0 border-y border-primary ${className}`}
+        plugins={plugins}
         {...rest}
     >
         {mosaics.map((m, i) =>

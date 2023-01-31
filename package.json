@@ -11,6 +11,7 @@
     "dependencies": {
         "@brainhubeu/react-carousel": "^2.0.4",
         "@cloudflare/pages-plugin-static-forms": "^1.0.0",
+        "@egjs/flicking-plugins": "^4.6.0",
         "@egjs/react-flicking": "^4.10.5",
         "@egjs/react-grid": "^1.13.0",
         "basicscroll": "^3.0.4",

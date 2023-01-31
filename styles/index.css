@@ -16,25 +16,6 @@
             1px -1px 0 var(--tw-shadow-color),
             -1px -1px 0 var(--tw-shadow-color);
     }
-
-    /* hide scrollbar and set overflow */
-    .carousel2 {
-        display: flex;
-        position: relative;
-        overflow-x: auto;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-
-    .carousel2::-webkit-scrollbar {
-        display: none;
-    }
-
-    .carousel2-item {
-        box-sizing: content-box;
-        display: flex;
-        flex: none;
-    }
 }
 
 .anchor {

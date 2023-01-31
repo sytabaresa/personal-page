@@ -1,53 +1,78 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import '@brainhubeu/react-carousel/lib/style.css';
+import React, { HTMLAttributes, Suspense, useEffect, useState } from 'react';
 import Post from "../types/post"
 import { useCarousel } from './useCarousel';
 import { range } from 'lodash';
+import Flicking, { FlickingProps } from "@egjs/react-flicking";
+import { FrameGrid } from "@egjs/react-grid";
+import "@egjs/react-flicking/dist/flicking.css";
 
-interface PostCarouselProps extends React.HTMLAttributes<HTMLDivElement> {
+Object.defineProperty(Array.prototype, 'flat', {
+    value: function (depth = 1) {
+        return this.reduce(function (flat: any, toFlatten: any[]) {
+            return flat.concat((Array.isArray(toFlatten) && (depth > 1)) ? toFlatten.flat(depth - 1) : toFlatten);
+        }, []);
+    }
+});
+
+interface PostCarouselProps extends Partial<FlickingProps> {
     posts: Post[]
 }
+
 const PostCarousel = (props: PostCarouselProps) => {
     const { className, ...rest } = props
 
-    const { handlers, current, scrollTo, useInfinite } = useCarousel()
+    // const { handlers, current, scrollTo, useInfinite } = useCarousel()
     const delay = 7000
 
-    const slides = (current: number, active: boolean, rest: Record<string, any>) => {
-        const p = props.posts[current % (props.posts.length - 1)]
+    const Slide = (props: { post: Post } & HTMLAttributes<HTMLDivElement>) => {
+        const { post, ...rest } = props
         // console.log(p, current, active)
-        return p && <div
-            className={`carousel2-item  ${active ? '' : 'opacity-50'}`}
-            {...rest}
-        >
-            <div className='w-[26rem] max-w-[100vw] md:mx-4' onClick={() => scrollTo(current - 1)} >
-                <div className="border-8 border-primary w-[26rem] max-w-[100vw] h-96 mx-auto">
-                    <img className="w-full h-full object-cover" src={p.coverImage} alt={p.slug} />
-                </div>
-                <div className="prose-sm">
-                    <h1 className="text-primary">{p.title}</h1>
-                    <p className="text-white text-lg">{p.excerpt.slice(50)}</p>
-                </div>
-            </div>
+        return <div className={`border-4 border-primary p-2 bg-cover`} style={{ backgroundImage: `url(${post.coverImage}` }}>
+            {/* <img className="w-full h-full absolute object-cover -z-10" src={} alt={post.slug} /> */}
+            <h1 className="text-primary">{post.title}</h1>
+            <p className="text-white">{post.excerpt}</p>
         </div>
     }
-    // const sections = useInfinite(slides, 4)
-    // const sections = range(12).map(i => slides(i, current + 1 == i))
-    const sections = useInfinite(range(4).map(i => slides(i, true, {})), 4)
+
+    const mosaics = [
+        [[1, 1, 2], [1, 1, 2], [3, 4, 4]],
+        [[1, 1, 2, 2], [1, 1, 2, 2], [3, 3, 4, 4], [3, 3, 4, 4]],
+        [[1]],
+        [[1, 1, 2, 2], [3, 3, 2, 2], [4, 4, 4, 5], [4, 4, 4, 5]],
+        [[1]],
+        [[1, 2], [1, 2]],
+        [[1]],
+        [[1, 1], [2, 2]],
+        [[1, 1, 1, 1, 2, 2], [1, 1, 1, 1, 2, 2], [1, 1, 1, 1, 2, 2], [3, 3, 4, 4, 4, 4], [3, 3, 4, 4, 4, 4], [3, 3, 4, 4, 4, 4]],
+        [[1]],
+    ]
 
     // console.log(current, sections)
-
-    return <>
-        {/* <button onClick={() => scrollTo(0)} className="bg-red-400"> Scroll</button> */}
-        <div
-            className={`relative carousel2 ${className}`}
-            {...rest}
-            {...handlers}
-        >
-            {sections}
-        </div>
-    </>
-
+    return <Flicking
+        circular={true}
+        useFindDOMNode={true}
+        align="prev"
+        className={`relative z-0 border-y border-primary ${className}`}
+        {...rest}
+    >
+        {mosaics.map((m, i) =>
+            <FrameGrid
+                gap={0}
+                defaultDirection={"end"}
+                frame={m}
+                rectSize={0}
+                key={i}
+                // useFrameFill={true}
+                className="w-full sm:w-1/2 md:w-1/3"
+            >
+                {[...new Set(m.flat())].map(e => {
+                    const post = props.posts[e & (props.posts.length - 1)]
+                    return <Slide post={post} key={e} />
+                    // <div className={`bg-red-${e * 100} text-black`}>{e}</div>
+                })}
+            </FrameGrid>
+        )}
+    </Flicking>
 }
 
 export default PostCarousel;

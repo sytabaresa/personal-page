@@ -91,7 +91,7 @@ const IndexPage = (props: IndexPageProps) => {
         <div id="page-1" className="min-h-screen flex flex-col">
 
           {/* cross 1 */}
-          <div className="absolute hidden md:grid top-0 left-0 mt-4 ml-4 grid-cols-2 gap-8" data-rellax-speed="8">
+          <div id="cross-1" className="absolute hidden md:grid top-0 left-0 mt-4 ml-4 grid-cols-2 gap-8" data-rellax-speed="8">
             <Cross className="hidden lg:block" />
             <Cross className="hidden lg:block" />
             <Cross />
@@ -102,31 +102,31 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* cross 2 */}
-          <div className="absolute hidden md:grid left-0 ml-4 grid-cols-2 gap-8 top-[75vh] anim-element" data-ty="400">
+          <div id="cross-2" className="absolute hidden md:grid left-0 ml-4 grid-cols-2 gap-8 top-[75vh] anim-element z-0" data-ty="400">
             <Cross />
             <Cross />
             <Cross />
           </div>
 
           {/* cross 3 */}
-          <div className="absolute hidden md:grid left-0 ml-32 grid-cols-2 gap-8
-         origin-center transform rotate-180 top-[85vh]">
+          <div id="cross-3" className="absolute hidden md:grid left-0 ml-32 grid-cols-2 gap-8
+         origin-center transform rotate-180 top-[85vh] z-0">
             <Cross />
             <Cross />
             <Cross />
-          </div>
-
-          <div className="absolute grid -left-[20rem] md:-left-[30rem] lg:-left-[25rem] ml-32 grid-cols-2 gap-8
-         origin-center transform rotate-180 top-[250vh] lg:top-[150vh] z-50 anim-element" data-tx="400">
-            <Cross className="stroke-base-100"/>
-            <Cross className="stroke-base-100"/>
-            <Cross className="stroke-base-100"/>
-            <Cross className="stroke-base-100 opacity-0"/>
-
           </div>
 
           {/* cross 4 */}
-          <div className="absolute hidden md:grid right-0 mt-4 mr-4 grid-cols-2 gap-8 top-[80vh] anim-element" data-ty="-400">
+          <div id="cross-4" className="absolute grid -left-[20rem] md:-left-[30rem] lg:-left-[25rem] ml-32 grid-cols-2 gap-8
+         origin-center transform rotate-180 top-[250vh] lg:top-[150vh] z-0 anim-element" data-tx="400">
+            <Cross className="stroke-base-100" />
+            <Cross className="stroke-base-100" />
+            <Cross className="stroke-base-100" />
+            <Cross className="stroke-base-100 opacity-0" />
+          </div>
+
+          {/* cross 5 */}
+          <div id="cross-5" className="absolute hidden md:grid right-0 mt-4 mr-4 grid-cols-2 gap-8 top-[80vh] anim-element" data-ty="-400">
             <Cross className="opacity-0" />
             <Cross />
             <Cross />
@@ -137,7 +137,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* Next arrow */}
-          <div className="absolute left-0 ml-2q lg:ml-0 lg:left-1/2 top-[85vh] cursor-pointer" onClick={() => {
+          <div id="next=arrow" className="absolute left-0 ml-2q lg:ml-0 lg:left-1/2 top-[85vh] cursor-pointer" onClick={() => {
             scroll.scrollTo(2000, {
               // duration: 1500,
               delay: 100,
@@ -151,7 +151,7 @@ const IndexPage = (props: IndexPageProps) => {
 
           {/* Triangles 1 */}
 
-          <div className="-z-10 absolute transform-gpu scale-50 md:scale-100 p-4 top-[75vh] md:top-0 right-[25%] md:right-[50%]">
+          <div id="triangles-1" className="-z-10 absolute transform-gpu scale-50 md:scale-100 p-4 top-[75vh] md:top-0 right-[25%] md:right-[50%]">
             <div className="anim-element" data-ty="-400">
               <Triangle className="absolute w-52 h-52 origin-center rotate-180 stroke-primary stroke-[8px]" />
             </div>
@@ -161,7 +161,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* Triangles 2 */}
-          <div className="-z-10 absolute transform-gpu scale-50 md:scale-100 p-4 top-[60vh] md:top-[70vh] left-[10%] md:left-[20%]">
+          <div id="triangles-2" className="-z-10 absolute transform-gpu scale-50 md:scale-100 p-4 top-[60vh] md:top-[70vh] left-[10%] md:left-[20%]">
             <div className="anim-element" data-tx="400">
               <Triangle className="absolute w-52 h-52 origin-center -rotate-90 stroke-primary stroke-[12px]" />
             </div>
@@ -173,18 +173,20 @@ const IndexPage = (props: IndexPageProps) => {
             </div>
           </div>
 
-          {/* 2022 */}
-          <div className="lg:flex-1 flex w-full">
+          {/* top-left */}
+          <div id="top-left-section" className="lg:flex-1 flex w-full">
             <div className="flex-1 md:ml-36 web-page font-mono text-3xl md:text-5xl mt-4 ml-4 anim-element" data-ty="500"
             // css={{ ...parallax(-3), top: '300px' }}
             >
-              <h2>syta.co</h2>
+              {/* syta.co */}
+              <h2 id="syta.co">syta.co</h2>
             </div>
             <div className="lg:mt-4 lg:mr-4 flex flex-col items-end anim-element" data-tx="500">
               <div className="w-28 h-6 md:w-64 md:h-10"
                 style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
               >
               </div>
+              {/* Year */}
               <div className="flex items-center mt-2">
                 <div className="w-8 md:w-24 h-1 bg-primary overf"></div>
                 <h4 className="font-mono text-2xl md:text-4xl ml-4">{new Date().getFullYear()}</h4>
@@ -192,16 +194,13 @@ const IndexPage = (props: IndexPageProps) => {
             </div>
           </div>
 
-          {/* syta.co */}
-
-
-          <div className="flex-1 flex flex-col md:flex-row">
-          {/* UNDER CONSTRUCTION */}
+          <div id="under-contruction" className="flex-1 flex flex-col md:flex-row">
+            {/* UNDER CONSTRUCTION */}
             <div className="relative mt-4 w-full md:w-1/2 inline-block font-bold anim-element" data-tx="-500">
               <div className="inline-block justify-start xl:justify-end pl-6 xl:pl-20 pr-2 md:pr-8 py-2 md:py-6 bg-base-100 relative"
                 style={{ backgroundImage: 'url("/img/diagonal-stripes.svg")' }}
               >
-              <Arrow className="w-8 h-8 xl:w-12 xl:h-12 top-0 absolute right-32 md:right-0 -mt-20 rotate-90 fill-primary" />
+                <Arrow className="w-8 h-8 xl:w-12 xl:h-12 top-0 absolute right-32 md:right-0 -mt-20 rotate-90 fill-primary" />
                 <div className="flex items-start justify-start p-2 bg-base-100">
                   <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none tracking-tighter text-yellow-400">CAUTION</h1>
                 </div>
@@ -225,7 +224,7 @@ const IndexPage = (props: IndexPageProps) => {
             </div>
 
             {/* info cards */}
-            <div className="flex-1 w-full md:w-1/2 flex flex-col items-center md:anim-element" data-ty="500">
+            <div id="info-data" className="flex-1 w-full md:w-1/2 flex flex-col items-center md:anim-element" data-ty="500">
               <h2 className="text-6xl md:text-7xl xl:text-8xl font-sans
              font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0 anim-element [text-shadow:0_2px_2px_rgba(0,0,0,0.12)]" data-tx="400">
                 Sebastian<br />Tabares.
@@ -256,7 +255,7 @@ const IndexPage = (props: IndexPageProps) => {
 
         {/* SECOND PAGE */}
         <div className="flex flex-col items-center md:items-start">
-          <PostCarousel posts={allPosts} className="md:mt-10 w-full md:w-4/5 mx-auto" />
+          <PostCarousel posts={allPosts} className="w-full" />
 
           {/* left block */}
           <div className="bg-primary transform rotate-45 absolute

@@ -6,11 +6,11 @@ import * as basicScroll from 'basicscroll'
 import { getAllPosts } from '../lib/api';
 import PostCarousel from '../components/postCarrousel';
 import Post from '../types/post';
-import { animateScroll as scroll, Element, Events } from "react-scroll"
+import { scroller, Element, Events } from "react-scroll"
 
 
 const CardButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) =>
-  <button className="btn-outline-primary 
+  <button className="btn-outline-primary !border-2
   !uppercase !w-24 !h-24 md:!w-28 md:!h-28 
   xl:!w-36 xl:!h-36 xl:text-xl" {...props}></button>
 
@@ -137,16 +137,17 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* Next arrow */}
-          <div id="next=arrow" className="absolute left-0 ml-2q lg:ml-0 lg:left-1/2 top-[85vh] cursor-pointer" onClick={() => {
-            scroll.scrollTo(2000, {
+          <div id="next=arrow" className="absolute left-0 ml-2q lg:ml-0 lg:left-1/2 top-[85vh] z-50" onClick={() => {
+            scroller.scrollTo('page-2-scroll', {
               // duration: 1500,
               delay: 100,
               smooth: 'easeInOutQuint',
-              // containerId: 'page-2-container',
+              // containerId: 'scroll-container',
+              isDynamic: true,
             })
-            // console.log('goto')
+            console.log('goto')
           }}>
-            <NextArrow className="relative w-12 h-12 md:w-24 md:h-24 fill-primary lg:-left-1/2 motion-safe:animate-bounce5s" />
+            <NextArrow className="relative w-12 h-12 md:w-24 md:h-24 fill-primary lg:-left-1/2 motion-safe:animate-bounce5s cursor-pointer" />
           </div>
 
           {/* Triangles 1 */}
@@ -179,7 +180,9 @@ const IndexPage = (props: IndexPageProps) => {
             // css={{ ...parallax(-3), top: '300px' }}
             >
               {/* syta.co */}
-              <h2 id="syta.co">syta.co</h2>
+              <a href="https://syta.co">
+                <h2 id="syta.co">syta.co</h2>
+              </a>
             </div>
             <div className="lg:mt-4 lg:mr-4 flex flex-col items-end anim-element" data-tx="500">
               <div className="w-28 h-6 md:w-64 md:h-10"
@@ -226,10 +229,11 @@ const IndexPage = (props: IndexPageProps) => {
             {/* info cards */}
             <div id="info-data" className="flex-1 w-full md:w-1/2 flex flex-col items-center md:anim-element" data-ty="500">
               <h2 className="text-6xl md:text-7xl xl:text-8xl font-sans
-             font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0 anim-element [text-shadow:0_2px_2px_rgba(0,0,0,0.12)]" data-tx="400">
+             font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0 anim-element
+             shadow-outline shadow-base-100" data-tx="400">
                 Sebastian<br />Tabares.
               </h2>
-              <div className="inline-block mt-8">
+              <div className="inline-block mt-8 md:mt-24 lg:mt-8">
                 <div>
                   <a href="https://github.com/sytabaresa">
                     <CardButton>github</CardButton>
@@ -254,29 +258,34 @@ const IndexPage = (props: IndexPageProps) => {
         <div className="anchor" />
 
         {/* SECOND PAGE */}
-        <div className="flex flex-col items-center md:items-start">
-          <PostCarousel posts={allPosts} className="w-full" />
+        <div id="page-2" className="flex flex-col items-center md:items-start">
+          <div className='mt-12 w-full'>
+            <Element name="page-2-scroll">
+            </Element>
+              <h2 className='my-12 text-3xl font-bold font-sans ml-4 md:ml-12'>MEANWHILE SEE SOME PROJECTS:</h2>
+            <PostCarousel posts={allPosts} className="w-full" />
+          </div>
 
           {/* left block */}
-          <div className="bg-primary transform rotate-45 absolute
+          <div id="left-block" className="bg-primary transform rotate-45 absolute
           w-[100rem] h-[100rem]
           left-[-110rem] md:left-[-70rem] xl:left-[-60rem]
-          top-[100vh] md:top-auto 
+          top-[90vh] sm:top-auto 
           md:bottom-[-40rem] 
           ">
           </div>
 
           {/* right block */}
-          <div className="bg-primary -rotate-45 absolute
+          <div id="right-block" className="bg-primary -rotate-45 absolute
           w-[200rem] h-[200rem]
           left-[3rem] md:left-[20rem] xl:left-[30rem]
-          top-[110vh] md:top-auto
+          top-[100vh] sm:top-auto
           md:bottom-[-170rem]">
           </div>
 
           {/* Main Form */}
-          <div className="mb-16 px-4 w-screen md:w-96 md:ml-16 mt-[30rem] lg:mt-0 relative">
-            <div className="inline-block mb-4">
+          <div className="mb-16 px-4 w-screen md:w-96 md:ml-16 mt-[30rem] md:mt-0 relative">
+            <div className="inline-block mb-8">
               <h1 className="uppercase text-base-100 text-5xl font-bold text-right shadow-primary shadow-outline">Let&apos;s work <br />together</h1>
             </div>
             <form className="form-control uppercase">
@@ -301,7 +310,7 @@ const IndexPage = (props: IndexPageProps) => {
               </div>
             </form>
           </div>
-          <Element name="page-2">
+          <Element name="page-3-scroll">
             <div className="relative md:absolute bottom-0
             md:left-[30rem] lg:left-auto lg:right-0 
             my-16 lg:mr-8 xl:mr-16 ">

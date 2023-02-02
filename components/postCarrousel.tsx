@@ -50,9 +50,12 @@ const PostCarousel = (props: PostCarouselProps) => {
         [[1]],
     ]
 
-    const plugins = [new AutoPlay({ duration: 5000, direction: "NEXT", stopOnHover: true }), new Fade()];
+    const plugins = [
+        new AutoPlay({ duration: 5000, direction: "NEXT", stopOnHover: true }),
+        // new Fade()
+    ];
 
-    
+
     // console.log(current, sections)
     return <Flicking
         circular={true}

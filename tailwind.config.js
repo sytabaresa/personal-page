@@ -59,7 +59,8 @@ module.exports = {
     plugins: [
         require('daisyui'),
         require('@tailwindcss/typography'),
-        require('tailwindcss-filters')
+        require('tailwindcss-filters'),
+        require('tailwind-scrollbar'),
     ],
     daisyui: {
         themes: [

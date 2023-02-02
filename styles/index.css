@@ -4,6 +4,12 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Electrolize&family=Montserrat:wght@300;400;600;700&display=swap");
 
+
+body {
+    @apply scrollbar-thin scrollbar-thumb-primary scrollbar-track-base-100;
+}
+
+
 @layer utilities {
     .anim-element {
         transform: translate(var(--tx), var(--ty)) rotate(var(--r));
@@ -27,28 +33,6 @@
     opacity: 0;
 }
 
-.skew-textarea {
-    left: 0;
-
-    &::before {
-        position: absolute;
-        left: -1px;
-        top: -1px;
-        content: '';
-        border-top: 70px solid silver;
-        border-right: 70px solid transparent;
-    }
-
-    &::after {
-        position: absolute;
-        left: -2px;
-        top: -2px;
-        content: '';
-        border-top: 70px solid silver;
-        border-right: 70px solid transparent;
-    }
-}
-
 
 .BrainhubCarouselItem--active {
     @apply  !opacity-100;
@@ -68,4 +52,21 @@
 
 .input-primary {
     @apply input input-ghost bg-transparent border-base-100 focus:text-base-100 border-b-2 border-t-0 border-x-0 focus:outline-none;
+}
+
+.skew-textarea {
+    @apply relative overflow-hidden;
+
+    &::before {
+        content:"";
+        @apply absolute w-32 h-32 right-0 bottom-0 z-50
+        rotate-45 translate-x-1/2 translate-y-1/2
+        ;
+    }
+
+    &::after {
+        content:"";
+        @apply absolute w-12 h-12 left-0 bottom-0 z-50
+        rotate-45 -translate-x-1/2 translate-y-1/2;
+    }
 }

@@ -102,7 +102,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* cross 2 */}
-          <div id="cross-2" className="absolute hidden md:grid left-0 ml-4 grid-cols-2 gap-8 top-[75vh] anim-element z-0" data-ty="400">
+          <div id="cross-2" className="absolute hidden md:grid left-0 ml-4 grid-cols-2 gap-8 top-[75vh] anim-element -z-10" data-ty="400">
             <Cross />
             <Cross />
             <Cross />
@@ -145,7 +145,7 @@ const IndexPage = (props: IndexPageProps) => {
               // containerId: 'scroll-container',
               isDynamic: true,
             })
-            console.log('goto')
+            // console.log('goto')
           }}>
             <NextArrow className="relative w-12 h-12 md:w-24 md:h-24 fill-primary lg:-left-1/2 motion-safe:animate-bounce5s cursor-pointer" />
           </div>
@@ -262,7 +262,7 @@ const IndexPage = (props: IndexPageProps) => {
           <div className='mt-12 w-full'>
             <Element name="page-2-scroll">
             </Element>
-              <h2 className='my-12 text-3xl font-bold font-sans ml-4 md:ml-12'>MEANWHILE SEE SOME PROJECTS:</h2>
+              <h2 className='my-12 text-4xl font-bold font-sans ml-4 md:ml-12 shadow-outline shadow-base-100 z-50'>MEANWHILE SEE SOME PROJECTS:</h2>
             <PostCarousel posts={allPosts} className="w-full" />
           </div>
 
@@ -289,31 +289,33 @@ const IndexPage = (props: IndexPageProps) => {
               <h1 className="uppercase text-base-100 text-5xl font-bold text-right shadow-primary shadow-outline">Let&apos;s work <br />together</h1>
             </div>
             <form className="form-control uppercase">
-              <label className="label">
+              <label className="label pb-0">
                 <span className="text-base-100">Name</span>
               </label>
-              <input type="text" placeholder="" className="input-primary" />
-              <label className="label">
+              <input type="text" placeholder="" className="input-primary mb-10" />
+              <label className="label pb-0">
                 <span className="text-base-100">Email</span>
               </label>
               <input type="email" placeholder="" className="input-primary mb-10" />
               {/* <label className="label">
                   <span className="text-base-100">Tell me a little what you need</span>
                 </label> */}
-              <div className="relative">
+              <div className="skew-textarea h-40
+               before:border before:border-base-100 before:bg-primary
+               after:border after:border-base-100 after:bg-primary">
                 <textarea
                   placeholder="Tell me a little what you need<"
-                  className="relative w-full textarea-primary h-40"
+                  className="relative w-full textarea-primary h-full scrollbar-thin scrollbar-thumb-base-100 scrollbar-track-primary"
                   rows={6}
                 />
-                <button type="submit" className="btn uppercase absolute bottom-0 right-0 w-32">Send (WIP)</button>
+                <button type="submit" className="btn uppercase absolute right-0 bottom-0 pr-24">Send (WIP)</button>
               </div>
             </form>
           </div>
           <Element name="page-3-scroll">
             <div className="relative md:absolute bottom-0
             md:left-[30rem] lg:left-auto lg:right-0 
-            my-16 lg:mr-8 xl:mr-16 ">
+            mb-8 md:my-16 lg:mr-8 xl:mr-16 ">
               <Logo className="fill-base-100 w-48 md:w-48 lg:w-40 2xl:w-80" />
             </div>
           </Element>

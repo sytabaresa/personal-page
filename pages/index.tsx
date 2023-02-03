@@ -7,6 +7,7 @@ import { getAllPosts } from '../lib/api';
 import PostCarousel from '../components/postCarrousel';
 import Post from '../types/post';
 import { scroller, Element, Events } from "react-scroll"
+import { Crane } from '../components/svg/crane';
 
 
 const CardButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) =>
@@ -40,8 +41,10 @@ const IndexPage = (props: IndexPageProps) => {
         elem: anchor,
         // inside: (instance, percentage, props) => console.log("inside", instance, percentage, props),
         // outside: (instance, percentage, props) => console.log("outside", instance, percentage, props),
-        from: 'top-bottom',
-        to: 'top-top',
+        // from: 'top-bottom',
+        from: '0',
+        to: '1000%',
+        // to: 'top-top',
         direct: elem,
         props: {
           '--tx': {
@@ -85,13 +88,23 @@ const IndexPage = (props: IndexPageProps) => {
     <Layout title="SYTA.CO">
       <div
         id="scroll-container"
-        className="text-primary relative overflow-hidden w-full "
+        className="text-primary relative overflow-hidden w-full"
       >
+        {/* <div className="anchor absolute top-[80vh] lg:top-[100vh]" /> */}
+        <div id="back-light" className="absolute right-0 w-[5000px] mt-40 md:mt-0 h-[120vh] -z-50">
+          <div className="absolute right-0 bottom-0 w-[800px] md:w-[1000px] lg:w-[1500px] xl:w-[2000px] h-full">
+            <img src='/img/b1.png' className="absolute top-0 right-0 w-full anim-element" data-ty="200" />
+            <img src='/img/b2.png' className="absolute top-0 right-0 w-full" />
+            <img src='/img/b3.png' className="!absolute top-0 right-0 w-full animate-G motion-reduce:animation-none" />
+            <img src='/img/b4.png' className="!absolute top-0 right-0 w-full animate-I motion-reduce:animation-none" />
+          </div>
+        </div>
+
 
         <div id="page-1" className="min-h-screen flex flex-col">
 
           {/* cross 1 */}
-          <div id="cross-1" className="absolute hidden md:grid top-0 left-0 mt-4 ml-4 grid-cols-2 gap-8" data-rellax-speed="8">
+          <div id="cross-1" className="absolute hidden md:grid top-0 left-0 mt-4 ml-4 grid-cols-2 gap-8">
             <Cross className="hidden lg:block" />
             <Cross className="hidden lg:block" />
             <Cross />
@@ -137,7 +150,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
 
           {/* Next arrow */}
-          <div id="next=arrow" className="absolute left-0 ml-2q lg:ml-0 lg:left-1/2 top-[85vh] z-50" onClick={() => {
+          <div id="next=arrow" className="absolute left-0 ml-2q lg:ml-0 lg:left-1/2 top-[80vh] z-50" onClick={() => {
             scroller.scrollTo('page-2-scroll', {
               // duration: 1500,
               delay: 100,
@@ -229,7 +242,7 @@ const IndexPage = (props: IndexPageProps) => {
             {/* info cards */}
             <div id="info-data" className="flex-1 w-full md:w-1/2 flex flex-col items-center md:anim-element" data-ty="500">
               <h2 className="text-6xl md:text-7xl xl:text-8xl font-sans
-             font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0 anim-element
+             font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0 my-4 anim-element
              shadow-outline shadow-base-100" data-tx="400">
                 Sebastian<br />Tabares.
               </h2>
@@ -255,14 +268,13 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
         </div>
 
-        <div className="anchor" />
 
         {/* SECOND PAGE */}
         <div id="page-2" className="flex flex-col items-center md:items-start">
           <div className='mt-12 w-full'>
             <Element name="page-2-scroll">
             </Element>
-              <h2 className='my-12 text-4xl font-bold font-sans ml-4 md:ml-12 shadow-outline shadow-base-100 z-50'>MEANWHILE SEE SOME PROJECTS:</h2>
+            <h2 className='my-12 text-4xl font-bold font-sans ml-4 md:ml-12 shadow-outline shadow-base-100 z-50'>MEANWHILE SEE SOME PROJECTS:</h2>
             <PostCarousel posts={allPosts} className="w-full" />
           </div>
 

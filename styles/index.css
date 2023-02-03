@@ -25,11 +25,9 @@ body {
 }
 
 .anchor {
-    position: absolute;
-    top: 100vh;
     width: 20px;
     height: 4px;
-    background: currentcolor;
+    background: transparent;
     opacity: 0;
 }
 
@@ -70,3 +68,15 @@ body {
         rotate-45 -translate-x-1/2 translate-y-1/2;
     }
 }
+
+ /* NEcesary in mobile, for full (no overflow) size of canvas */
+ .full-screen-div {
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
+   /* NEcesary in mobile, for full (no overflow) size of canvas */
+ .full-top-screen {
+    top: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    top: calc(var(--vh, 1vh) * 100);
+  }

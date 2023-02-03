@@ -15,7 +15,17 @@ module.exports = {
                 primary: {
                     DEFAULT: '#ffcc00',
                     focus: '#cca300',
-                    content: '#ffffff'
+                    content: '#ffffff',
+                    50: "#fff7d5",
+                    100: "#ffeeaa",
+                    200: "#ffe680",
+                    300: "#ffdd55",
+                    400: "#ffd52b",
+                    500: "#ffcc00",
+                    600: "#cca300",
+                    700: "#997a00",
+                    800: "#665200",
+                    900: "#332900",
                 },
                 secondary: {
                     DEFAULT: "#ffdd55",
@@ -59,7 +69,6 @@ module.exports = {
     plugins: [
         require('daisyui'),
         require('@tailwindcss/typography'),
-        require('tailwindcss-filters'),
         require('tailwind-scrollbar'),
     ],
     daisyui: {

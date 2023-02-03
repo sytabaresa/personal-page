@@ -13,7 +13,7 @@ import { Crane } from '../components/svg/crane';
 const CardButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) =>
   <button className="btn-outline-primary !border-2
   !uppercase !w-24 !h-24 md:!w-28 md:!h-28 
-  xl:!w-36 xl:!h-36 xl:text-xl" {...props}></button>
+  2xl:!w-36 2xl:!h-36 2xl:text-xl" {...props}></button>
 
 interface IndexPageProps {
   allPosts: Post[]
@@ -218,11 +218,11 @@ const IndexPage = (props: IndexPageProps) => {
               >
                 <Arrow className="w-8 h-8 xl:w-12 xl:h-12 top-0 absolute right-32 md:right-0 -mt-20 rotate-90 fill-primary" />
                 <div className="flex items-start justify-start p-2 bg-base-100">
-                  <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none tracking-tighter text-yellow-400">CAUTION</h1>
+                  <h1 className="text-6xl lg:text-7xl 2xl:text-9xl leading-none tracking-tighter text-yellow-400">CAUTION</h1>
                 </div>
               </div>
               <div
-                className="text-3xl md:text-5xl xl:text-7xl flex mt-4 ml-4 xl:ml-24"
+                className="text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl flex mt-4 ml-4 xl:ml-24"
                 style={{
                   lineHeight: .8,
                   // perspective: '1px',
@@ -241,7 +241,7 @@ const IndexPage = (props: IndexPageProps) => {
 
             {/* info cards */}
             <div id="info-data" className="flex-1 w-full md:w-1/2 flex flex-col items-center md:anim-element" data-ty="500">
-              <h2 className="text-6xl md:text-7xl xl:text-8xl font-sans
+              <h2 className="text-6xl lg:text-7xl 2xl:text-8xl font-sans
              font-semibold text-right tracking-tighter mr-4 sm:mr-16 md:mr-0 my-4 anim-element
              shadow-outline shadow-base-100" data-tx="400">
                 Sebastian<br />Tabares.

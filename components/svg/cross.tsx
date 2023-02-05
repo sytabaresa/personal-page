@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import React,{ SVGProps } from "react";
 
 export const Cross = (props: SVGProps<SVGSVGElement>) => {
     const {className, ...rest} = props

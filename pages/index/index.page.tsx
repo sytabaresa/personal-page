@@ -1,14 +1,13 @@
 
-import { ButtonHTMLAttributes, useEffect } from 'react';
-import Layout from '../components/Layout'
-import { Arrow, Logo, Cross, NextArrow, Triangle } from '../components/svg'
+import React, { ButtonHTMLAttributes, useEffect } from 'react';
+import Layout from '@components/Layout'
+import { Arrow, Logo, Cross, NextArrow, Triangle } from '@components/svg'
 import * as basicScroll from 'basicscroll'
-import { getAllPosts } from '../lib/api';
-import PostCarousel from '../components/postCarrousel';
-import Post from '../types/post';
-import { scroller, Element, Events } from "react-scroll"
-import { Crane } from '../components/svg/crane';
-
+import PostCarousel from '@components/postCarrousel';
+import Post from 'types/post';
+import { scroller, Element } from "react-scroll"
+import { usePageContext } from 'renderer/usePageContext';
+import '../../styles/anim.css'
 
 const CardButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) =>
   <button className="btn-outline-primary !border-2
@@ -19,9 +18,15 @@ interface IndexPageProps {
   allPosts: Post[]
 }
 
-const IndexPage = (props: IndexPageProps) => {
+export { Page }
 
-  const { allPosts } = props
+function Page(props: IndexPageProps) {
+  const pageContext = usePageContext()
+  // console.log('a', props, pageContext)
+  const allPosts = pageContext.posts
+  // console.log(allPosts)
+
+  // const { allPosts } = props
 
   useEffect(() => {
     const anims: any[] = []
@@ -335,21 +340,4 @@ const IndexPage = (props: IndexPageProps) => {
       </div>
     </Layout>
   )
-}
-
-export default IndexPage
-
-export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
-
-  return {
-    props: { allPosts },
-  }
 }

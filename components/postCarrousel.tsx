@@ -1,11 +1,9 @@
-import React, { HTMLAttributes, Suspense, useEffect, useState } from 'react';
-import Post from "../types/post"
-import { useCarousel } from './useCarousel';
-import { range } from 'lodash';
+import React, { HTMLAttributes } from 'react';
+import Post from "types/post"
 import Flicking, { FlickingProps } from "@egjs/react-flicking";
 import { FrameGrid } from "@egjs/react-grid";
-import "@egjs/react-flicking/dist/flicking.css";
 import { AutoPlay, Fade } from "@egjs/flicking-plugins";
+import "@egjs/react-flicking/dist/flicking.css";
 
 Object.defineProperty(Array.prototype, 'flat', {
     value: function (depth = 1) {
@@ -20,21 +18,25 @@ interface PostCarouselProps extends Partial<FlickingProps> {
 }
 
 const PostCarousel = (props: PostCarouselProps) => {
-    const { className, ...rest } = props
+    const { className, posts, ...rest } = props
+
+    if (!posts || posts.length == 0)
+        return <></>
 
     // const { handlers, current, scrollTo, useInfinite } = useCarousel()
     const delay = 7000
 
-    const Slide = (props: { post: Post } & HTMLAttributes<HTMLDivElement>) => {
+    const Slide = (props: { post: Post } & HTMLAttributes<HTMLAnchorElement>) => {
         const { post, className, ...rest } = props
         // console.log(p, current, active)
-        return <div className={`border-4 border-primary p-2 bg-cover ${className}`}
-            style={{ backgroundImage: `url(${post.coverImage}` }}
+        return <a href={'/posts/'+post.slug} className={`bock border-4 border-primary ${className ?? ''}`}
             {...rest}>
-            {/* <img className="w-full h-full absolute object-cover -z-10" src={} alt={post.slug} /> */}
+            <img className="w-full h-full absolute object-cover brightness-50 -z-10" src={post.coverImage} alt={post.slug} />
+            <div className='p-2'>
             <h1 className="text-primary">{post.title}</h1>
-            <p className="text-white">{post.excerpt}</p>
-        </div>
+            <p className="text-white">{post.description}</p>
+            </div>
+        </a>
     }
 
     const mosaics = [
@@ -51,7 +53,7 @@ const PostCarousel = (props: PostCarouselProps) => {
     ]
 
     const plugins = [
-        new AutoPlay({ duration: 5000, direction: "NEXT", stopOnHover: true }),
+        new AutoPlay({ duration: delay, direction: "NEXT", stopOnHover: false }),
         // new Fade()
     ];
 
@@ -62,7 +64,7 @@ const PostCarousel = (props: PostCarouselProps) => {
         useFindDOMNode={true}
         align="center"
         noPanelStyleOverride={true}
-        className={`relative z-0 border-y border-primary ${className}`}
+        className={`relative z-0 border-y border-primary ${className ?? ''}`}
         plugins={plugins}
         {...rest}
     >
@@ -77,7 +79,8 @@ const PostCarousel = (props: PostCarouselProps) => {
                 className="w-full sm:w-1/2 md:w-1/3"
             >
                 {[...new Set(m.flat())].map(e => {
-                    const post = props.posts[e & (props.posts.length - 1)]
+                    const post = posts[(e - 1) % posts.length]
+                    // console.log(e)
                     return <Slide post={post} key={e} />
                     // <div className={`bg-red-${e * 100} text-black`}>{e}</div>
                 })}

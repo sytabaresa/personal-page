@@ -2992,10 +2992,10 @@ vfile@^5.0.0:
     unist-util-stringify-position "^3.0.0"
     vfile-message "^3.0.0"
 
-vite-plugin-ssr@^0.4.75:
-  version "0.4.75"
-  resolved "https://registry.yarnpkg.com/vite-plugin-ssr/-/vite-plugin-ssr-0.4.75.tgz#6039220d1cf43a76c3ffcce2cf14a4701a4969db"
-  integrity sha512-Ax/V7LcVojd530YMR4PwV/FNllQmzS+gcx8RVQ3Vcu/FsB8VJ9+Cw1NU4fw4u8m1cwiyodWAtCsuZ1DPpKSkpg==
+vite-plugin-ssr@^0.4.77:
+  version "0.4.77"
+  resolved "https://registry.yarnpkg.com/vite-plugin-ssr/-/vite-plugin-ssr-0.4.77.tgz#7678e3fe92a3bc15ae994f118c6b36a04f76da8c"
+  integrity sha512-QfhdkDIo5lWEHEianOGmlQCXHD5lmzJ111k6Z7QlIIwFDgRAUrLfYna5Q8SVKaAjlxtwVffd7Bo8He9i+d14Ng==
   dependencies:
     "@brillout/import" "^0.2.1"
     "@brillout/json-serializer" "^0.5.3"

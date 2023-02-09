@@ -8,6 +8,7 @@ import Post from 'types/post';
 import { scroller, Element } from "react-scroll"
 import { usePageContext } from 'renderer/usePageContext';
 import '../../styles/anim.css'
+import { ContactForm } from '@components/contactForm';
 
 const CardButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) =>
   <button className="btn-outline-primary !border-2
@@ -256,15 +257,15 @@ function Page(props: IndexPageProps) {
                   <a href="https://github.com/sytabaresa">
                     <CardButton>github</CardButton>
                   </a>
-                  <a href="https://www.linkedin.com/in/sytabaresa/">
+                  <a href="https://www.linkedin.com/in/syta">
                     <CardButton>linkedin</CardButton>
                   </a>
                 </div>
                 <div>
-                  <a href="https://twitter.com/sytabares">
+                  <a href="https://twitter.com/syta_co">
                     <CardButton>twitter</CardButton>
                   </a>
-                  <a href="mailto:sytabaresa@gmail.com">
+                  <a href="mailto:me@syta.co">
                     <CardButton>email</CardButton>
                   </a>
                 </div>
@@ -302,32 +303,7 @@ function Page(props: IndexPageProps) {
 
           {/* Main Form */}
           <div className="mb-16 px-4 w-screen md:w-96 md:ml-16 mt-[30rem] md:mt-0 relative">
-            <div className="inline-block mb-8">
-              <h1 className="uppercase text-base-100 text-5xl font-bold text-right shadow-primary shadow-outline">Let&apos;s work <br />together</h1>
-            </div>
-            <form className="form-control uppercase">
-              <label className="label pb-0">
-                <span className="text-base-100">Name</span>
-              </label>
-              <input type="text" placeholder="" className="input-primary mb-10" />
-              <label className="label pb-0">
-                <span className="text-base-100">Email</span>
-              </label>
-              <input type="email" placeholder="" className="input-primary mb-10" />
-              {/* <label className="label">
-                  <span className="text-base-100">Tell me a little what you need</span>
-                </label> */}
-              <div className="skew-textarea h-40
-               before:border before:border-base-100 before:bg-primary
-               after:border after:border-base-100 after:bg-primary">
-                <textarea
-                  placeholder="Tell me a little what you need<"
-                  className="relative w-full textarea-primary h-full scrollbar-thin scrollbar-thumb-base-100 scrollbar-track-primary"
-                  rows={6}
-                />
-                <button type="submit" className="btn uppercase absolute right-0 bottom-0 pr-24">Send (WIP)</button>
-              </div>
-            </form>
+           <ContactForm />
           </div>
           <Element name="page-3-scroll">
             <div className="relative md:absolute bottom-0

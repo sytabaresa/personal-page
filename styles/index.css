@@ -49,7 +49,7 @@ body {
 }
 
 .input-primary {
-    @apply input input-ghost bg-transparent border-base-100 focus:text-base-100 border-b-2 border-t-0 border-x-0 focus:outline-none;
+    @apply input input-ghost bg-transparent text-base-100 border-base-100 focus:text-base-100 border-b-2 border-t-0 border-x-0 focus:outline-none;
 }
 
 .skew-textarea {

@@ -8,7 +8,7 @@
     },
     "dependencies": {
         "@egjs/flicking-plugins": "^4.7.0",
-        "@egjs/react-flicking": "^4.10.6",
+        "@egjs/react-flicking": "^4.10.7",
         "@egjs/react-grid": "^1.13.0",
         "@types/compression": "^1.7.2",
         "@types/express": "^4.17.14",

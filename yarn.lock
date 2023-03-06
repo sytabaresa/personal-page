@@ -301,10 +301,10 @@
   resolved "https://registry.yarnpkg.com/@egjs/flicking-plugins/-/flicking-plugins-4.7.0.tgz#3f1a06c3c77dc42149a25ce1543f4255b91416fd"
   integrity sha512-BbFDKanOPVLG042fRNC0BSNa/28mohscT0hQOruorfplv/4Qm3jQ+Ldk2iytsdN631tF199NW6nkkizEmRMRRA==
 
-"@egjs/flicking@~4.10.5":
-  version "4.10.5"
-  resolved "https://registry.yarnpkg.com/@egjs/flicking/-/flicking-4.10.5.tgz#38187dfde1ae8feb126c28cf7549dab4ac001440"
-  integrity sha512-R19xZAwXKIhdwmMq+m6xIGI5Zw7f14EsmV9owcesqTK+Hw2eGvcrkfAYazaO6YeKm39WOxoy80WLhN4kCDnXfw==
+"@egjs/flicking@~4.10.6":
+  version "4.10.6"
+  resolved "https://registry.yarnpkg.com/@egjs/flicking/-/flicking-4.10.6.tgz#6f64b4b3f8a2d0a7438ce28bb51dc7bedf7b1dec"
+  integrity sha512-DmzkGroItTC3U+H7t7AWlP+0ELT6d6cOlr7rQk+8IzmPtVonJT8/L4Roq3JCBAyCIsMwkpVoLoikOr547QLLng==
   dependencies:
     "@egjs/axes" "^3.8.3"
     "@egjs/component" "^3.0.1"
@@ -332,13 +332,13 @@
   resolved "https://registry.yarnpkg.com/@egjs/list-differ/-/list-differ-1.0.0.tgz#2277aff52e3e4bd9318d5c30ffc3ba3b6216f05e"
   integrity sha512-HsbMKc0ZAQH+EUeCmI/2PvTYSybmkaWwakU8QGDYYgMVIg9BQ5sM0A0Nnombjxo2+JzXHxmH+jw//yGX+y6GYw==
 
-"@egjs/react-flicking@^4.10.6":
-  version "4.10.6"
-  resolved "https://registry.yarnpkg.com/@egjs/react-flicking/-/react-flicking-4.10.6.tgz#e7b598609c4c35d0084a360efb14be5a523c522a"
-  integrity sha512-AlOMQFoQdxjwfuk+FT0eXpSZZ3lVmFsg/OWlmJ2y3qs7OckOKcr+WBq6uqQD2EyYA7+//vjd8sistJkkLxqBWQ==
+"@egjs/react-flicking@^4.10.8":
+  version "4.10.8"
+  resolved "https://registry.yarnpkg.com/@egjs/react-flicking/-/react-flicking-4.10.8.tgz#369f9056c763c10188306846ed60da9a86874471"
+  integrity sha512-INrrqyKQdKpYU/b67vxg6ifig0jiIAqvSxgRizjobBzDH5RjCRNXy7qePMY4q/t1YBjq+uYJk/Gn+LruEYJ/uQ==
   dependencies:
     "@egjs/component" "^3.0.2"
-    "@egjs/flicking" "~4.10.5"
+    "@egjs/flicking" "~4.10.6"
     "@egjs/list-differ" "^1.0.0"
 
 "@egjs/react-grid@^1.13.0":
